@@ -11,3 +11,12 @@ target 'RxSwiftWorkshop' do
     pod 'SnapKit', '~> 3.2.0'
     pod 'Marshal', '~> 1.0'
 end
+
+plugin 'cocoapods-keys', {
+    :project => "RxSwiftWorkshop",
+    :keys => [
+        "IATACodesAPIKey",
+        "SchipholAPIAppID",
+        "SchipholAPIAppKey",
+    ]
+}

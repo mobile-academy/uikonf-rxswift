@@ -1,4 +1,5 @@
 PODS:
+  - Keys (1.0.0)
   - Marshal (1.2.4)
   - RxCocoa (3.4.0):
     - RxSwift (~> 3.4)
@@ -9,19 +10,25 @@ PODS:
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
+  - Keys (from `Pods/CocoaPodsKeys`)
   - Marshal (~> 1.0)
   - RxCocoa (~> 3.0)
   - RxDataSources (~> 1.0)
   - RxSwift (~> 3.0)
   - SnapKit (~> 3.2.0)
 
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
+
 SPEC CHECKSUMS:
+  Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
   Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
   RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
   RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
   RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: eae71037fe358747618bde34f2002eb97dd5858a
+PODFILE CHECKSUM: 69e6d8f746cb13f88510ee744689c7286f9594ae
 
 COCOAPODS: 1.2.1

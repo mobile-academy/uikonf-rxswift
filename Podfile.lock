@@ -1,16 +1,27 @@
 PODS:
+  - Marshal (1.2.4)
   - RxCocoa (3.4.0):
     - RxSwift (~> 3.4)
+  - RxDataSources (1.0.3):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
   - RxSwift (3.4.0)
+  - SnapKit (3.2.0)
 
 DEPENDENCIES:
+  - Marshal (~> 1.0)
   - RxCocoa (~> 3.0)
+  - RxDataSources (~> 1.0)
   - RxSwift (~> 3.0)
+  - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
+  Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
   RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
+  RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
   RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: e38dab9af492436b0848f4eacdbd67f8acb2ad8c
+PODFILE CHECKSUM: eae71037fe358747618bde34f2002eb97dd5858a
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

@@ -11,7 +11,15 @@
 		4385966D1EABC06800776FD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4385966C1EABC06800776FD3 /* AppDelegate.swift */; };
 		438596741EABC06800776FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 438596731EABC06800776FD3 /* Assets.xcassets */; };
 		438596771EABC06800776FD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438596751EABC06800776FD3 /* LaunchScreen.storyboard */; };
+		466B1D2D1EBA095C00817988 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466B1D2C1EBA095C00817988 /* CoreLocation.framework */; };
+		466B1D2F1EBA096200817988 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466B1D2E1EBA096200817988 /* MapKit.framework */; };
+		7900006D4F7E45D0236801C4 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790001545A1E24B77B09637F /* MapViewDelegate.swift */; };
+		79000394FC6EE8D3547FF94C /* FakeSystemGeolocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000095B20383E503946982 /* FakeSystemGeolocator.swift */; };
 		7900060EEF468A2C8E4FF41E /* ModelFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790008337D23D1BEF8E9DB2E /* ModelFormatters.swift */; };
+		790006AD7C97B14DD6719802 /* Geolocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790007F4085C6C0CECB12703 /* Geolocator.swift */; };
+		790009523CDE0607211CC0AF /* GeolocatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000E5B44024AB0E4C1B6D2 /* GeolocatorSpec.swift */; };
+		79000A32DAE588F5178CC8FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000187CFBB2E47748E850A /* MapViewController.swift */; };
+		79000EE78747ACBE81271356 /* GentleUnwrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000E1511EB1430092FC38D /* GentleUnwrapping.swift */; };
 		8108601AF59ED8EA7EE407F8 /* FakeIATAKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086A9C451D010A64B689E3 /* FakeIATAKeys.swift */; };
 		8108603B301829C5B1DE8FE3 /* FlightsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810862A374CA8980AC5FA5AC /* FlightsViewControllerSpec.swift */; };
 		8108610F6FE2FD5FD91B281F /* FlightStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086A0C2C6A868E67176AFD /* FlightStatus.swift */; };
@@ -62,9 +70,17 @@
 		438596761EABC06800776FD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		438596781EABC06800776FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4385967E1EABC18E00776FD3 /* Introduction.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Introduction.playground; sourceTree = "<group>"; };
+		466B1D2C1EBA095C00817988 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		466B1D2E1EBA096200817988 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		52036CEEDCB7E091B933FF1E /* Pods_Workshops_RxSwiftWorkshopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workshops_RxSwiftWorkshopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78500F6DCA81CC5CBAFD6536 /* Pods_Workshops_RxSwiftWorkshop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workshops_RxSwiftWorkshop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79000095B20383E503946982 /* FakeSystemGeolocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSystemGeolocator.swift; sourceTree = "<group>"; };
+		790001545A1E24B77B09637F /* MapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
+		79000187CFBB2E47748E850A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		790007F4085C6C0CECB12703 /* Geolocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geolocator.swift; sourceTree = "<group>"; };
 		790008337D23D1BEF8E9DB2E /* ModelFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelFormatters.swift; sourceTree = "<group>"; };
+		79000E1511EB1430092FC38D /* GentleUnwrapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GentleUnwrapping.swift; sourceTree = "<group>"; };
+		79000E5B44024AB0E4C1B6D2 /* GeolocatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeolocatorSpec.swift; sourceTree = "<group>"; };
 		8108613B491818888084903B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		810862A374CA8980AC5FA5AC /* FlightsViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsViewControllerSpec.swift; sourceTree = "<group>"; };
 		810862D65A9C80AE347A1D2E /* FakeAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAPIClient.swift; sourceTree = "<group>"; };
@@ -106,6 +122,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				466B1D2F1EBA096200817988 /* MapKit.framework in Frameworks */,
+				466B1D2D1EBA095C00817988 /* CoreLocation.framework in Frameworks */,
 				A6C525EBCF52E3932667BFE5 /* Pods_Workshops_RxSwiftWorkshop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +142,8 @@
 		0F30E297ED77089A1B82B2FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				466B1D2E1EBA096200817988 /* MapKit.framework */,
+				466B1D2C1EBA095C00817988 /* CoreLocation.framework */,
 				78500F6DCA81CC5CBAFD6536 /* Pods_Workshops_RxSwiftWorkshop.framework */,
 				52036CEEDCB7E091B933FF1E /* Pods_Workshops_RxSwiftWorkshopTests.framework */,
 			);
@@ -160,8 +180,52 @@
 				438596781EABC06800776FD3 /* Info.plist */,
 				810867A027732D668900A835 /* Flights */,
 				81086D0F7CEC28C860045480 /* Shared */,
+				79000CB854946F6F8A5ADF37 /* Maps */,
 			);
 			path = RxSwiftWorkshop;
+			sourceTree = "<group>";
+		};
+		7900007DEBFF50D4BCF590F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				79000187CFBB2E47748E850A /* MapViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		79000385CB3CBCB7117BFFC3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				790001545A1E24B77B09637F /* MapViewDelegate.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		790007DC3C3C457B1CD0B480 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				79000E1511EB1430092FC38D /* GentleUnwrapping.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		790008B629C09D8059134EA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				790007F4085C6C0CECB12703 /* Geolocator.swift */,
+				79000E5B44024AB0E4C1B6D2 /* GeolocatorSpec.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		79000CB854946F6F8A5ADF37 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				790008B629C09D8059134EA2 /* Model */,
+				7900007DEBFF50D4BCF590F0 /* View */,
+				79000385CB3CBCB7117BFFC3 /* ViewModel */,
+			);
+			path = Maps;
 			sourceTree = "<group>";
 		};
 		810860E938CE060EA33D96DD /* Model */ = {
@@ -223,6 +287,7 @@
 				810865CC83803757226FAAB4 /* FakeSchipolService.swift */,
 				810865C534A4B23E74F980D8 /* FakeIATAService.swift */,
 				8108654D09ABEB14B17FD03C /* FakeFlightsViewModel.swift */,
+				79000095B20383E503946982 /* FakeSystemGeolocator.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -284,6 +349,7 @@
 			children = (
 				A12CCD151EB762D900BBD32E /* Info.plist */,
 				81086961E4C7AA6CDB357C2A /* Fakes */,
+				790007DC3C3C457B1CD0B480 /* Utilities */,
 			);
 			path = RxSwiftWorkshopTests;
 			sourceTree = "<group>";
@@ -535,6 +601,9 @@
 				81086764A01D1350119986BC /* FlightCell.swift in Sources */,
 				81086F8FDE9D76E29B82F4B6 /* Utilities.swift in Sources */,
 				7900060EEF468A2C8E4FF41E /* ModelFormatters.swift in Sources */,
+				79000A32DAE588F5178CC8FD /* MapViewController.swift in Sources */,
+				7900006D4F7E45D0236801C4 /* MapViewDelegate.swift in Sources */,
+				790006AD7C97B14DD6719802 /* Geolocator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +622,9 @@
 				81086D7601ABC29B1E9F9441 /* FakeIATAService.swift in Sources */,
 				8108603B301829C5B1DE8FE3 /* FlightsViewControllerSpec.swift in Sources */,
 				81086C2A9A758FE606ED912F /* FakeFlightsViewModel.swift in Sources */,
+				790009523CDE0607211CC0AF /* GeolocatorSpec.swift in Sources */,
+				79000394FC6EE8D3547FF94C /* FakeSystemGeolocator.swift in Sources */,
+				79000EE78747ACBE81271356 /* GentleUnwrapping.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

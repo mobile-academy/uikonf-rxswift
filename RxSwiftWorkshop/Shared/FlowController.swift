@@ -8,20 +8,24 @@ import UIKit
 
 final class FlowController {
 
-    func provideRootViewController() -> UIViewController {
+    func setupRootViewController(for window: UIWindow) {
+        window.rootViewController = createFlightsViewController()
+    }
+
+    private func createFlightsViewController() -> UIViewController {
         let jsonClient = JSONAPIClient()
         let schipolService = SchipolService(client: jsonClient)
         let iataService = IATAService(client: jsonClient)
         let flightViewModel = FlightsViewModel(schipolCallable: schipolService, iataCallable: iataService)
-        let flightsViewController = FlightsViewController(viewModel: flightViewModel, detailsViewControllerCreator: provideMapViewController)
-        let navigationController = UINavigationController(rootViewController: flightsViewController)
-        return navigationController
+        let flightsViewController = FlightsViewController(viewModel: flightViewModel, showDetailsViewController: showMapViewController)
+        return UINavigationController(rootViewController: flightsViewController)
     }
 
-    func provideMapViewController(flight: Flight) -> UIViewController {
+    func showMapViewController(flight: Flight, from fromViewController: UIViewController) {
         let geolocator = Geolocator()
         let flightVisualisationViewModel = FlightVisualisationViewModel(flight: flight, geolocator: geolocator)
         let delegate = MapViewDelegate()
-        return MapViewController(viewModel: flightVisualisationViewModel, delegate: delegate)
+        let mapViewController = MapViewController(viewModel: flightVisualisationViewModel, delegate: delegate)
+        fromViewController.navigationController?.pushViewController(mapViewController, animated: true)
     }
 }

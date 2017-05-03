@@ -16,9 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         guard !isRunningUnitTests() else { return false }
-        keyWindow = UIWindow(frame: UIScreen.main.bounds)
-        keyWindow?.rootViewController = flowController.provideRootViewController()
-        keyWindow?.makeKeyAndVisible()
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        flowController.setupRootViewController(for: window)
+        window.makeKeyAndVisible()
+        keyWindow = window
         return true
     }
 }

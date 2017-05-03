@@ -19,11 +19,11 @@ final class FlightsViewController: UIViewController {
     }()
 
     let viewModel: FlightsDisplayable
-    private let detailsViewControllerCreator: (Flight) -> UIViewController
+    private let showDetailsViewController: (Flight, UIViewController) -> Void
 
-    init(viewModel: FlightsDisplayable, detailsViewControllerCreator: @escaping (Flight) -> UIViewController) {
+    init(viewModel: FlightsDisplayable, showDetailsViewController: @escaping (Flight, UIViewController) -> Void) {
         self.viewModel = viewModel
-        self.detailsViewControllerCreator = detailsViewControllerCreator
+        self.showDetailsViewController = showDetailsViewController
         super.init(nibName: nil, bundle: nil)
         title = "Flights"
     }
@@ -51,8 +51,7 @@ final class FlightsViewController: UIViewController {
             .itemSelected
             .subscribe(onNext: { [unowned self] indexPath in
                 if let flight = self.viewModel.flights.value[safe: indexPath.row] {
-                    let nextViewController = self.detailsViewControllerCreator(flight)
-                    self.navigationController?.pushViewController(nextViewController, animated: true)
+                    self.showDetailsViewController(flight, self)
                 }
             })
             .disposed(by: disposeBag)

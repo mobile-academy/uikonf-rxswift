@@ -9,7 +9,6 @@ import CoreLocation
 
 protocol FlightVisualisation {
     var route: Observable<Route> { get }
-    func refresh() -> Disposable
 }
 
 final class FlightVisualisationViewModel: FlightVisualisation {
@@ -28,7 +27,19 @@ final class FlightVisualisationViewModel: FlightVisualisation {
     private let formatter = AirportFormatter()
 
     private let internalRoute = PublishSubject<Route>()
-    var route: Observable<Route> { return internalRoute.asObservable() }
+    var route: Observable<Route> {
+        return geocodingCache.flatMap { [weak self] location -> Observable<Route> in
+            guard let `self` = self else { return .error(Error.notEnoughInformationToVisualiseFlight) }
+            // TODO: should take into consideration whether it's departing or arriving
+            // TODO: also, take care of this force unwrap
+            let route = Route(
+                start: Constants.amsterdamLocation,
+                position: self.calculateFlightPosition(forOtherEnd: location),
+                end: location
+            )
+            return .just(route)
+        }
+    }
 
     init(flight: Flight, geolocator: Geolocator) {
         self.flight = flight
@@ -40,15 +51,6 @@ final class FlightVisualisationViewModel: FlightVisualisation {
         } else {
             geocodingCache = .error(Error.notEnoughInformationToVisualiseFlight)
         }
-    }
-
-    func refresh() -> Disposable {
-        return geocodingCache.flatMap { [weak self] location -> Observable<Route> in
-            guard let `self` = self else { return .error(Error.notEnoughInformationToVisualiseFlight) }
-            // TODO: should take into consideration whether it's departing or arriving
-            // TODO: also, take care of this force unwrap
-            return .just(Route(start: Constants.amsterdamLocation, position: self.calculateFlightPosition(forOtherEnd: location), end: location))
-        }.do(onNext: { [weak self] in self?.internalRoute.onNext($0) }).subscribe()
     }
 
     private func calculateFlightPosition(forOtherEnd _: CLLocation) -> CLLocation {

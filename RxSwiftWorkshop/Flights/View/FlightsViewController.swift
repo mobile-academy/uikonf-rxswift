@@ -10,6 +10,7 @@ import RxDataSources
 
 final class FlightsViewController: UIViewController {
     private let disposeBag = DisposeBag()
+    private let formatter = FlightFormatter()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -56,8 +57,8 @@ final class FlightsViewController: UIViewController {
         dataSource.configureCell = {
             _, tableView, indexPath, flight in
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FlightCell.self), for: indexPath)
-            cell.textLabel?.text = "\(flight.name) → \(flight.destinations?.first?.name ?? "unknown")"
-            cell.detailTextLabel?.text = "\(flight.serviceType.description) | (\(flight.statuses.map { $0.description }.joined(separator: ", ")))"
+            cell.textLabel?.text = formatter.generalInfo(of: flight)
+            cell.detailTextLabel?.text = formatter.details(of: flight)
             return cell
         }
         return dataSource

@@ -7,8 +7,8 @@ import Foundation
 
 func isRunningUnitTests() -> Bool {
     let env = ProcessInfo.processInfo.environment
-    if let injectBundle = env["XCInjectBundle"] {
-        return URL(string: injectBundle)!.pathExtension == "xctest"
+    if let injectBundle = env["XCInjectBundle"], let url = URL(string: injectBundle) {
+        return url.pathExtension == "xctest"
     }
     return false
 }

@@ -14,7 +14,11 @@ protocol SchipolCallable {
 
 struct SchipolService: SchipolCallable {
     struct Constants {
-        static let baseURL = "https://api.schiphol.nl/public-flights/"
+        static let baseURL: URL = {
+            let urlString = "https://api.schiphol.nl/public-flights/"
+            guard let url = URL(string: urlString) else { fatalError("Cannot parse Schipol base url.") }
+            return url
+        }()
     }
 
     let client: APIClient
@@ -24,8 +28,7 @@ struct SchipolService: SchipolCallable {
     init(client: APIClient, keys: SchipolKeys = RxSwiftWorkshopKeys()) {
         self.client = client
         self.keys = keys
-        guard let url = URL(string: Constants.baseURL) else { fatalError("Cannot parse Schipol base url.") }
-        requestBuilder = URLRequestBuilder(base: url)
+        requestBuilder = URLRequestBuilder(base: Constants.baseURL)
     }
 
     func flights() -> Observable<[Flight]> {

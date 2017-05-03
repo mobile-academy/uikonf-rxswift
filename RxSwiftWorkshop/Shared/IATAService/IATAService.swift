@@ -15,7 +15,11 @@ protocol IATACallable {
 
 struct IATAService: IATACallable {
     struct Constants {
-        static let baseURL = "http://iatacodes.org/api/v6/"
+        static let baseURL: URL = {
+            let urlString = "http://iatacodes.org/api/v6/"
+            guard let url = URL(string: urlString) else { fatalError("Cannot parse IATA base url.") }
+            return url
+        }()
     }
 
     let client: APIClient
@@ -25,8 +29,7 @@ struct IATAService: IATACallable {
     init(client: APIClient, keys: IATAKeys = RxSwiftWorkshopKeys()) {
         self.client = client
         self.keys = keys
-        guard let url = URL(string: Constants.baseURL) else { fatalError("Cannot parse IATA base url.") }
-        requestBuilder = URLRequestBuilder(base: url)
+        requestBuilder = URLRequestBuilder(base: Constants.baseURL)
     }
 
     func airport(for code: String) -> Observable<Airport> {

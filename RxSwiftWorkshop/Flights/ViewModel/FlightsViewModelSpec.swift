@@ -40,11 +40,9 @@ final class FlightsViewModelSpec: QuickSpec {
 
                     beforeEach {
                         disposeBag = DisposeBag()
-
                         schipolService.observable = scheduler.createColdObservable([next(0, self.sampleFlights()), completed(0)]).asObservable()
                         iataService.airportObservable = scheduler.createColdObservable([next(0, self.sampleAirport()), completed(0)]).asObservable()
                         sut = FlightsViewModel(schipolCallable: schipolService, iataCallable: iataService)
-
                         sut.refresh().disposed(by: disposeBag)
                         scheduler.start()
                     }

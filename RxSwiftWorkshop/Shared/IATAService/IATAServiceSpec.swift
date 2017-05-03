@@ -50,7 +50,7 @@ final class IATAServiceSpec: QuickSpec {
                 }
 
                 it("should call proper request") {
-                    let urlString = IATAService.Constants.baseURL + "airlines?api_key=\(keys.iATACodesAPIKey)&code=LT"
+                    let urlString = IATAService.Constants.baseURL.absoluteString + "airlines?api_key=\(keys.iATACodesAPIKey)&code=LT"
                     var request = URLRequest(url: URL(string: urlString)!)
                     request.httpMethod = "GET"
                     client.verifyCall(withIdentifier: "call", arguments: [request])
@@ -77,7 +77,7 @@ final class IATAServiceSpec: QuickSpec {
                 }
 
                 it("should call proper request") {
-                    let urlString = IATAService.Constants.baseURL + "airports?api_key=\(keys.iATACodesAPIKey)&code=CDG"
+                    let urlString = IATAService.Constants.baseURL.absoluteString + "airports?api_key=\(keys.iATACodesAPIKey)&code=CDG"
                     var request = URLRequest(url: URL(string: urlString)!)
                     request.httpMethod = "GET"
                     client.verifyCall(withIdentifier: "call", arguments: [request])

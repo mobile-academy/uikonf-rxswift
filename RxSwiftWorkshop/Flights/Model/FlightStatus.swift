@@ -5,7 +5,7 @@
 
 import Foundation
 
-enum FlightStatus {
+enum FlightStatus: String {
     // Any flight
     case flightScheduled // SCH
     case cancelled // CNX
@@ -56,5 +56,11 @@ enum FlightStatus {
         case "GCH": self = .gateChange; break
         default: return nil
         }
+    }
+}
+
+extension FlightStatus: CustomStringConvertible {
+    var description: String {
+        return rawValue
     }
 }

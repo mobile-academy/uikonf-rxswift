@@ -13,7 +13,7 @@ struct URLRequestBuilder {
 
     let base: URL
 
-    func build(for path: String, with queryItems: [URLQueryItem] = []) -> Single<URLRequest> {
+    func build(for path: String, with queryItems: [URLQueryItem] = [], headers: [String: String] = [:]) -> Single<URLRequest> {
         var urlComponents = URLComponents(url: base.appendingPathComponent(path), resolvingAgainstBaseURL: false)
         if !queryItems.isEmpty {
             urlComponents?.queryItems = queryItems
@@ -23,6 +23,7 @@ struct URLRequestBuilder {
         }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        headers.forEach { field, value in request.addValue(value, forHTTPHeaderField: field) }
         return .just(request)
     }
 }

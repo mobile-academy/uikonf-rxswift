@@ -22,7 +22,7 @@ struct IATAService: IATACallable {
     let keys: IATAKeys
     private let requestBuilder: URLRequestBuilder
 
-    init(client: APIClient = JSONAPIClient(), keys: IATAKeys = RxSwiftWorkshopKeys()) {
+    init(client: APIClient, keys: IATAKeys = RxSwiftWorkshopKeys()) {
         self.client = client
         self.keys = keys
         guard let url = URL(string: Constants.baseURL) else { fatalError("Cannot parse IATA base url.") }

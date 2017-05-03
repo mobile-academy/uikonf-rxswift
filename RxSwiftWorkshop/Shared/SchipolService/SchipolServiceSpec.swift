@@ -49,6 +49,7 @@ final class SchipolServiceSpec: QuickSpec {
                     let urlString = SchipolService.Constants.baseURL + "flights?app_id=\(keys.schipholAPIAppID)&app_key=\(keys.schipholAPIAppKey)"
                     var request = URLRequest(url: URL(string: urlString)!)
                     request.httpMethod = "GET"
+                    request.addValue("v3", forHTTPHeaderField: "ResourceVersion")
                     client.verifyCall(withIdentifier: "call", arguments: [request])
                 }
 

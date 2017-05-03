@@ -21,7 +21,7 @@ struct SchipolService: SchipolCallable {
     let keys: SchipolKeys
     private let requestBuilder: URLRequestBuilder
 
-    init(client: APIClient = JSONAPIClient(), keys: SchipolKeys = RxSwiftWorkshopKeys()) {
+    init(client: APIClient, keys: SchipolKeys = RxSwiftWorkshopKeys()) {
         self.client = client
         self.keys = keys
         guard let url = URL(string: Constants.baseURL) else { fatalError("Cannot parse Schipol base url.") }
@@ -30,7 +30,7 @@ struct SchipolService: SchipolCallable {
 
     func flights() -> Observable<[Flight]> {
         return requestBuilder
-            .build(for: "flights", with: queryParameters()).asObservable()
+            .build(for: "flights", with: queryParameters(), headers: headers()).asObservable()
             .flatMap(client.call)
             .map { json -> [Flight] in try json.value(for: "flights") }
     }
@@ -39,6 +39,12 @@ struct SchipolService: SchipolCallable {
         return [
             URLQueryItem(name: "app_id", value: keys.schipholAPIAppID),
             URLQueryItem(name: "app_key", value: keys.schipholAPIAppKey),
+        ]
+    }
+
+    private func headers() -> [String: String] {
+        return [
+            "ResourceVersion": "v3",
         ]
     }
 }

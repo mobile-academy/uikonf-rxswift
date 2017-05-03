@@ -18,8 +18,8 @@ struct Flight: Unmarshaling, Equatable {
     let mainFlight: String
     let codeshares: [String]
 
-    let terminal: Int
-    let gate: String
+    let terminal: Int?
+    let gate: String?
 
     let estimatedLandingTime: Date?
     let actualLandingTime: Date?
@@ -44,8 +44,8 @@ struct Flight: Unmarshaling, Equatable {
         serviceType: ServiceType,
         mainFlight: String,
         codeshares: [String],
-        terminal: Int,
-        gate: String,
+        terminal: Int?,
+        gate: String?,
         estimatedLandingTime: Date? = nil,
         actualLandingTime: Date? = nil,
         publicEstimatedOffBlockTime: Date? = nil,
@@ -95,8 +95,8 @@ struct Flight: Unmarshaling, Equatable {
         mainFlight = try object.value(for: "mainFlight")
         codeshares = (try? object.value(for: "codeshares.codeshares")) ?? []
 
-        terminal = try object.value(for: "terminal")
-        gate = try object.value(for: "gate")
+        terminal = try? object.value(for: "terminal")
+        gate = try? object.value(for: "gate")
 
         estimatedLandingTime = try? object.value(for: "estimatedLandingTime")
         actualLandingTime = try? object.value(for: "actualLandingTime")
@@ -107,7 +107,8 @@ struct Flight: Unmarshaling, Equatable {
         expectedTimeBoarding = try? object.value(for: "expectedTimeBoarding")
         expectedTimeGateClosing = try? object.value(for: "expectedTimeGateClosing")
 
-        statuses = try object.value(for: "publicFlightState.flightStates")
+        let statusStrings: [String] = try object.value(for: "publicFlightState.flightStates")
+        statuses = statusStrings.flatMap(FlightStatus.init(code:))
         destinationCodes = try object.value(for: "route.destinations")
         destinations = nil
     }
@@ -116,6 +117,12 @@ struct Flight: Unmarshaling, Equatable {
         var flight = self
         flight.destinations = destinations
         return flight
+    }
+}
+
+extension Flight: Hashable {
+    public var hashValue: Int {
+        return id
     }
 }
 

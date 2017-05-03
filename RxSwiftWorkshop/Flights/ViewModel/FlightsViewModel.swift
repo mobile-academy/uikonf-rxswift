@@ -7,23 +7,34 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class FlightsViewModel {
+protocol FlightsDisplayable {
+    var flights: Variable<[Flight]> { get }
+    func refresh() -> Disposable
+}
+
+final class FlightsViewModel: FlightsDisplayable {
+    private let disposeBag = DisposeBag()
     let schipolCallable: SchipolCallable
     let iataCallable: IATACallable
 
     let flights: Variable<[Flight]>
+    private lazy var flightsCall: Observable<[Flight]> = {
+        self.schipolCallable
+            .flights()
+            .flatMap { flights in self.updateAirports(for: flights) }
+            .do(onError: { print($0) })
+            .catchErrorJustReturn([])
+    }()
 
     init(schipolCallable: SchipolCallable, iataCallable: IATACallable) {
         self.schipolCallable = schipolCallable
         self.iataCallable = iataCallable
         flights = Variable([])
+        flightsCall.bind(to: flights).disposed(by: disposeBag)
     }
 
     func refresh() -> Disposable {
-        return schipolCallable
-            .flights()
-            .flatMap { flights in self.updateAirports(for: flights) }
-            .bind(to: flights)
+        return flightsCall.subscribe()
     }
 
     private func updateAirports(for flights: [Flight]) -> Observable<[Flight]> {

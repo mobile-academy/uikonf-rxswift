@@ -21,3 +21,14 @@ enum ServiceType {
         }
     }
 }
+
+extension ServiceType: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .passengerLine: return "Passenger Line"
+        case .passengerCharter: return "Passenger Charter"
+        case .freightLine: return "Freight Line"
+        case .freightCharter: return "Freight Charter"
+        }
+    }
+}

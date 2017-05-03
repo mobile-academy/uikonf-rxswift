@@ -10,6 +10,9 @@ abstract_target 'Workshops' do
     pod 'Marshal', '~> 1.0'
     pod 'SwiftDate',     '~> 4.0'
 
+    # For code formatting
+    pod 'SwiftFormat/CLI'
+
     target 'RxSwiftWorkshop' do
         pod 'RxDataSources', '~> 1.0'
         pod 'SnapKit', '~> 3.2.0'

@@ -8,23 +8,23 @@ import RxSwift
 import RxCocoa
 
 final class JSONAPIClient: APIClient {
-	enum Error: Swift.Error {
-		case conversionFailed(message: String)
-	}
-	
-	let urlSession: URLSession
+    enum Error: Swift.Error {
+        case conversionFailed(message: String)
+    }
 
-	init(urlSession: URLSession = URLSession.shared) {
-		self.urlSession = urlSession
-	}
+    let urlSession: URLSession
 
-	func call(request: URLRequest) -> Observable<ResponseJSON> {
-		return  urlSession.rx.json(request: request).map {
-			value in
-			guard let json = value as? ResponseJSON else {
-				throw RxCocoaURLError.deserializationError(error: Error.conversionFailed(message: "Can't convert response type to ResponseJSON"))
-			}
-			return json
-		}
-	}
+    init(urlSession: URLSession = URLSession.shared) {
+        self.urlSession = urlSession
+    }
+
+    func call(request: URLRequest) -> Observable<ResponseJSON> {
+        return urlSession.rx.json(request: request).map {
+            value in
+            guard let json = value as? ResponseJSON else {
+                throw RxCocoaURLError.deserializationError(error: Error.conversionFailed(message: "Can't convert response type to ResponseJSON"))
+            }
+            return json
+        }
+    }
 }

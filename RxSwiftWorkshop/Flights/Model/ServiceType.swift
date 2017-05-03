@@ -6,18 +6,18 @@
 import Foundation
 
 enum ServiceType {
-	case passengerLine // J
-	case passengerCharter // C
-	case freightLine // F
-	case freightCharter // H
+    case passengerLine // J
+    case passengerCharter // C
+    case freightLine // F
+    case freightCharter // H
 
-	init?(code: String) {
-		switch code {
-			case "J": self = .passengerLine; break
-			case "C": self = .passengerCharter; break
-			case "F": self = .freightLine; break
-			case "H": self = .freightCharter; break
-			default: return nil
-		}
-	}
+    init?(code: String) {
+        switch code {
+        case "J": self = .passengerLine; break
+        case "C": self = .passengerCharter; break
+        case "F": self = .freightLine; break
+        case "H": self = .freightCharter; break
+        default: return nil
+        }
+    }
 }

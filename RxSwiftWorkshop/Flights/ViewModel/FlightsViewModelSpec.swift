@@ -17,75 +17,75 @@ final class FlightsViewModelSpec: QuickSpec {
 
             var sut: FlightsViewModel!
             var schipolService: FakeSchipolService!
-	        var iataService: FakeIATAService!
+            var iataService: FakeIATAService!
 
-	        var scheduler: TestScheduler!
+            var scheduler: TestScheduler!
 
             beforeEach {
-	            schipolService = FakeSchipolService()
-	            iataService = FakeIATAService()
+                schipolService = FakeSchipolService()
+                iataService = FakeIATAService()
                 sut = FlightsViewModel(schipolCallable: schipolService, iataCallable: iataService)
 
-	            scheduler = TestScheduler(initialClock: 0)
+                scheduler = TestScheduler(initialClock: 0)
             }
 
             afterEach {
                 sut = nil
-	            scheduler = nil
+                scheduler = nil
             }
 
-	        describe("refreshing flights") {
+            describe("refreshing flights") {
 
-		        context("basic scenario with 1 flight, 1 airport") {
-			        var disposeBag: DisposeBag!
+                context("basic scenario with 1 flight, 1 airport") {
+                    var disposeBag: DisposeBag!
 
-			        beforeEach {
-				        disposeBag = DisposeBag()
-				        schipolService.observable = scheduler.createColdObservable([next(0, self.sampleFlights()), completed(0)]).asObservable()
-				        iataService.airportObservable = scheduler.createColdObservable([next(0, self.sampleAirport()), completed(0)]).asObservable()
-				        sut.refresh().disposed(by: disposeBag)
-				        scheduler.start()
-			        }
+                    beforeEach {
+                        disposeBag = DisposeBag()
+                        schipolService.observable = scheduler.createColdObservable([next(0, self.sampleFlights()), completed(0)]).asObservable()
+                        iataService.airportObservable = scheduler.createColdObservable([next(0, self.sampleAirport()), completed(0)]).asObservable()
+                        sut.refresh().disposed(by: disposeBag)
+                        scheduler.start()
+                    }
 
-			        afterEach {
-				        disposeBag = nil
-			        }
+                    afterEach {
+                        disposeBag = nil
+                    }
 
-			        it("should have 1 flight") {
-				        expect(sut.flights.value.count).to(equal(1))
-			        }
+                    it("should have 1 flight") {
+                        expect(sut.flights.value.count).to(equal(1))
+                    }
 
-			        it("should match flight id") {
-				        expect(sut.flights.value.first?.id).to(equal(self.sampleFlights().first?.id))
-			        }
+                    it("should match flight id") {
+                        expect(sut.flights.value.first?.id).to(equal(self.sampleFlights().first?.id))
+                    }
 
-			        it("should match destination airports") {
-				        expect(sut.flights.value.first?.destinations).to(equal([self.sampleAirport()]))
-			        }
-		        }
-	        }
+                    it("should match destination airports") {
+                        expect(sut.flights.value.first?.destinations).to(equal([self.sampleAirport()]))
+                    }
+                }
+            }
         }
     }
 }
 
 extension FlightsViewModelSpec {
-	func sampleFlights() -> [Flight] {
-		return [
-				Flight(id: 1,
-				       name: "HV123",
-				       number: 123,
-				       schedule: Date(),
-				       prefixIATA: "ABC",
-				       serviceType: .passengerLine,
-				       mainFlight: "HV123",
-				       codeshares: [],
-				       terminal: 13,
-				       gate: "E08",
-				       destinationCodes: ["WAW"])
-		]
-	}
+    func sampleFlights() -> [Flight] {
+        return [
+            Flight(id: 1,
+                   name: "HV123",
+                   number: 123,
+                   schedule: Date(),
+                   prefixIATA: "ABC",
+                   serviceType: .passengerLine,
+                   mainFlight: "HV123",
+                   codeshares: [],
+                   terminal: 13,
+                   gate: "E08",
+                   destinationCodes: ["WAW"]),
+        ]
+    }
 
-	func sampleAirport() -> Airport {
-		return Airport(code: "WAW", name: "Chopin Airport")
-	}
+    func sampleAirport() -> Airport {
+        return Airport(code: "WAW", name: "Chopin Airport")
+    }
 }

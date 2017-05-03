@@ -7,20 +7,20 @@ import Foundation
 import Marshal
 
 struct Airport: Unmarshaling, Equatable {
-	let code: String
-	let name: String
+    let code: String
+    let name: String
 
-	init(code: String, name: String) {
-		self.code = code
-		self.name = name
-	}
+    init(code: String, name: String) {
+        self.code = code
+        self.name = name
+    }
 
-	init(object: MarshaledObject) throws {
-		code = try object.value(for: "code")
-		name = try object.value(for: "name")
-	}
+    init(object: MarshaledObject) throws {
+        code = try object.value(for: "code")
+        name = try object.value(for: "name")
+    }
 }
 
 func ==(lhs: Airport, rhs: Airport) -> Bool {
-	return lhs.code == rhs.code && lhs.name == rhs.name
+    return lhs.code == rhs.code && lhs.name == rhs.name
 }

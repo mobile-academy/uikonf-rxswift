@@ -14,6 +14,7 @@ PODS:
     - RxSwift (~> 3.4)
   - SnapKit (3.2.0)
   - SwiftDate (4.1.1)
+  - SwiftFormat/CLI (0.28.3)
 
 DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - RxTest
   - SnapKit (~> 3.2.0)
   - SwiftDate (~> 4.0)
+  - SwiftFormat/CLI
 
 EXTERNAL SOURCES:
   Keys:
@@ -44,7 +46,8 @@ SPEC CHECKSUMS:
   RxTest: beb6beb882cf1dcac5fc9fdbd4760a5254e7f3a6
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftDate: ae615078806a322183e5f64e02e80ca8d939bf48
+  SwiftFormat: c00b6415ff8d6731be09c8536a38802af43bc244
 
-PODFILE CHECKSUM: '0840a498fedaffdf118f51824460da3e41a8addb'
+PODFILE CHECKSUM: bc09f0af7752c98c991079ca7b368fc3e63fb7ea
 
 COCOAPODS: 1.2.1

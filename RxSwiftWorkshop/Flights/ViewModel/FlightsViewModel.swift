@@ -8,38 +8,38 @@ import RxSwift
 import RxCocoa
 
 final class FlightsViewModel {
-	let schipolCallable: SchipolCallable
-	let iataCallable: IATACallable
+    let schipolCallable: SchipolCallable
+    let iataCallable: IATACallable
 
-	let flights: Variable<[Flight]>
+    let flights: Variable<[Flight]>
 
-	init(schipolCallable: SchipolCallable, iataCallable: IATACallable) {
-		self.schipolCallable = schipolCallable
-		self.iataCallable = iataCallable
-		self.flights = Variable([])
-	}
+    init(schipolCallable: SchipolCallable, iataCallable: IATACallable) {
+        self.schipolCallable = schipolCallable
+        self.iataCallable = iataCallable
+        flights = Variable([])
+    }
 
-	func refresh() -> Disposable {
-		return schipolCallable
-				.flights()
-				.flatMap { flights in self.updateAirports(for: flights) }
-				.bind(to: flights)
-	}
+    func refresh() -> Disposable {
+        return schipolCallable
+            .flights()
+            .flatMap { flights in self.updateAirports(for: flights) }
+            .bind(to: flights)
+    }
 
-	private func updateAirports(for flights: [Flight]) -> Observable<[Flight]> {
-		return Observable<Flight>
-				.from(flights)
-				.flatMap {
-					flight -> Observable<Flight> in
-					self.airports(from: flight.destinationCodes).map { airports in flight.with(destinations: airports) }
-				}
-				.toArray()
-	}
+    private func updateAirports(for flights: [Flight]) -> Observable<[Flight]> {
+        return Observable<Flight>
+            .from(flights)
+            .flatMap {
+                flight -> Observable<Flight> in
+                self.airports(from: flight.destinationCodes).map { airports in flight.with(destinations: airports) }
+            }
+            .toArray()
+    }
 
-	private func airports(from destinationCodes: [String]) -> Observable<[Airport]> {
-		return Observable<String>
-				.from(destinationCodes)
-				.flatMap { code in self.iataCallable.airport(for: code) }
-				.toArray()
-	}
+    private func airports(from destinationCodes: [String]) -> Observable<[Airport]> {
+        return Observable<String>
+            .from(destinationCodes)
+            .flatMap { code in self.iataCallable.airport(for: code) }
+            .toArray()
+    }
 }

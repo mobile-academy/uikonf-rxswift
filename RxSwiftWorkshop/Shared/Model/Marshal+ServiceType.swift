@@ -6,7 +6,7 @@
 import Foundation
 import Marshal
 
-extension ServiceType : ValueType {
+extension ServiceType: ValueType {
     public static func value(from object: Any) throws -> ServiceType {
         guard let serviceTypeString = object as? String else {
             throw MarshalError.typeMismatch(expected: String.self, actual: type(of: object))

@@ -9,5 +9,5 @@ import RxSwift
 typealias ResponseJSON = [String: Any]
 
 protocol APIClient {
-	func call(request: URLRequest) -> Observable<ResponseJSON>
+    func call(request: URLRequest) -> Observable<ResponseJSON>
 }

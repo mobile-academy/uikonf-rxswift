@@ -282,6 +282,7 @@
 			buildConfigurationList = 4385967B1EABC06800776FD3 /* Build configuration list for PBXNativeTarget "RxSwiftWorkshop" */;
 			buildPhases = (
 				99CB083799899B787C1B0469 /* [CP] Check Pods Manifest.lock */,
+				A19E13671EB9B322000B4389 /* Run Swift Format */,
 				438596651EABC06800776FD3 /* Sources */,
 				438596661EABC06800776FD3 /* Frameworks */,
 				438596671EABC06800776FD3 /* Resources */,
@@ -468,6 +469,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		A19E13671EB9B322000B4389 /* Run Swift Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Swift Format";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/SwiftFormat/CommandLineTool/swiftformat\" \"${SRCROOT}/RxSwiftWorkshop\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -718,6 +733,7 @@
 				A12CCD191EB762D900BBD32E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

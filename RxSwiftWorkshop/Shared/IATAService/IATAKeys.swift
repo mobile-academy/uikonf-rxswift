@@ -7,7 +7,7 @@ import Foundation
 import Keys
 
 protocol IATAKeys {
-	var iATACodesAPIKey: String { get }
+    var iATACodesAPIKey: String { get }
 }
 
-extension RxSwiftWorkshopKeys: IATAKeys { }
+extension RxSwiftWorkshopKeys: IATAKeys {}

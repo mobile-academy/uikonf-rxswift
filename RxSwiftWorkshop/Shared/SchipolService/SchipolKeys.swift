@@ -7,8 +7,8 @@ import Foundation
 import Keys
 
 protocol SchipolKeys {
-	var schipholAPIAppID: String { get }
-	var schipholAPIAppKey: String { get }
+    var schipholAPIAppID: String { get }
+    var schipholAPIAppKey: String { get }
 }
 
-extension RxSwiftWorkshopKeys : SchipolKeys { }
+extension RxSwiftWorkshopKeys: SchipolKeys {}

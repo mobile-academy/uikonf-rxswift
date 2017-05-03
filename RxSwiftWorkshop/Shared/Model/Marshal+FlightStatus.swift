@@ -6,7 +6,7 @@
 import Foundation
 import Marshal
 
-extension FlightStatus : ValueType {
+extension FlightStatus: ValueType {
     public static func value(from object: Any) throws -> FlightStatus {
         guard let flightStatusString = object as? String else {
             throw MarshalError.typeMismatch(expected: String.self, actual: type(of: object))

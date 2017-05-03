@@ -9,36 +9,36 @@ import Marshal
 import Keys
 
 protocol SchipolCallable {
-	func flights() -> Observable<[Flight]>
+    func flights() -> Observable<[Flight]>
 }
 
 struct SchipolService: SchipolCallable {
-	struct Constants {
-		static let baseURL = "https://api.schiphol.nl/public-flights/"
-	}
+    struct Constants {
+        static let baseURL = "https://api.schiphol.nl/public-flights/"
+    }
 
-	let client: APIClient
-	let keys: SchipolKeys
-	private let requestBuilder: URLRequestBuilder
+    let client: APIClient
+    let keys: SchipolKeys
+    private let requestBuilder: URLRequestBuilder
 
-	init(client: APIClient = JSONAPIClient(), keys: SchipolKeys = RxSwiftWorkshopKeys()) {
-		self.client = client
-		self.keys = keys
-		guard let url = URL(string: Constants.baseURL) else { fatalError("Cannot parse Schipol base url.") }
-		self.requestBuilder = URLRequestBuilder(base: url)
-	}
+    init(client: APIClient = JSONAPIClient(), keys: SchipolKeys = RxSwiftWorkshopKeys()) {
+        self.client = client
+        self.keys = keys
+        guard let url = URL(string: Constants.baseURL) else { fatalError("Cannot parse Schipol base url.") }
+        requestBuilder = URLRequestBuilder(base: url)
+    }
 
-	func flights() -> Observable<[Flight]> {
-		return requestBuilder
-				.build(for: "flights", with: queryParameters()).asObservable()
-				.flatMap(client.call)
-				.map { json -> [Flight] in try json.value(for: "flights") }
-	}
+    func flights() -> Observable<[Flight]> {
+        return requestBuilder
+            .build(for: "flights", with: queryParameters()).asObservable()
+            .flatMap(client.call)
+            .map { json -> [Flight] in try json.value(for: "flights") }
+    }
 
-	private func queryParameters() -> [URLQueryItem] {
-		return [
-				URLQueryItem(name: "app_id", value: keys.schipholAPIAppID),
-				URLQueryItem(name: "app_key", value: keys.schipholAPIAppKey)
-		]
-	}
+    private func queryParameters() -> [URLQueryItem] {
+        return [
+            URLQueryItem(name: "app_id", value: keys.schipholAPIAppID),
+            URLQueryItem(name: "app_key", value: keys.schipholAPIAppKey),
+        ]
+    }
 }

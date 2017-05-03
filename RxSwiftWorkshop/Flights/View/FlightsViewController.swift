@@ -57,8 +57,8 @@ final class FlightsViewController: UIViewController {
         dataSource.configureCell = {
             _, tableView, indexPath, flight in
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FlightCell.self), for: indexPath)
-            cell.textLabel?.text = formatter.generalInfo(of: flight)
-            cell.detailTextLabel?.text = formatter.details(of: flight)
+            cell.textLabel?.text = self.formatter.generalInfo(of: flight)
+            cell.detailTextLabel?.text = self.formatter.details(of: flight)
             return cell
         }
         return dataSource

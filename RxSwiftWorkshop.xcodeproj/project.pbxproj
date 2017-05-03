@@ -16,11 +16,14 @@
 		7900006D4F7E45D0236801C4 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790001545A1E24B77B09637F /* MapViewDelegate.swift */; };
 		79000394FC6EE8D3547FF94C /* FakeSystemGeolocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000095B20383E503946982 /* FakeSystemGeolocator.swift */; };
 		7900039827B790F1D721DD64 /* Equatability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000ACAEFDEF90A65883CFF /* Equatability.swift */; };
+		7900043FC44B5112CFB85CF1 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790008518E6DD1F739329E24 /* Route.swift */; };
+		790004F8689BB9A10FF9D187 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790001A485670B30511AC694 /* FlowController.swift */; };
 		7900060EEF468A2C8E4FF41E /* ModelFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790008337D23D1BEF8E9DB2E /* ModelFormatters.swift */; };
 		790006AD7C97B14DD6719802 /* Geolocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790007F4085C6C0CECB12703 /* Geolocator.swift */; };
 		790009523CDE0607211CC0AF /* GeolocatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000E5B44024AB0E4C1B6D2 /* GeolocatorSpec.swift */; };
 		79000A32DAE588F5178CC8FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000187CFBB2E47748E850A /* MapViewController.swift */; };
 		79000AC0B90E0EF08F5D532F /* LazyFaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000D137AE92FC2BBAA3C62 /* LazyFaking.swift */; };
+		79000D49D13F3500608747E7 /* FlightVisualizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790001030A05FDFD2470DDA7 /* FlightVisualizationViewModel.swift */; };
 		79000EE78747ACBE81271356 /* GentleUnwrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000E1511EB1430092FC38D /* GentleUnwrapping.swift */; };
 		8108601AF59ED8EA7EE407F8 /* FakeIATAKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086A9C451D010A64B689E3 /* FakeIATAKeys.swift */; };
 		8108603B301829C5B1DE8FE3 /* FlightsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810862A374CA8980AC5FA5AC /* FlightsViewControllerSpec.swift */; };
@@ -77,10 +80,13 @@
 		52036CEEDCB7E091B933FF1E /* Pods_Workshops_RxSwiftWorkshopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workshops_RxSwiftWorkshopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78500F6DCA81CC5CBAFD6536 /* Pods_Workshops_RxSwiftWorkshop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workshops_RxSwiftWorkshop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79000095B20383E503946982 /* FakeSystemGeolocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSystemGeolocator.swift; sourceTree = "<group>"; };
+		790001030A05FDFD2470DDA7 /* FlightVisualizationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightVisualizationViewModel.swift; sourceTree = "<group>"; };
 		790001545A1E24B77B09637F /* MapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
 		79000187CFBB2E47748E850A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		790001A485670B30511AC694 /* FlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
 		790007F4085C6C0CECB12703 /* Geolocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geolocator.swift; sourceTree = "<group>"; };
 		790008337D23D1BEF8E9DB2E /* ModelFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelFormatters.swift; sourceTree = "<group>"; };
+		790008518E6DD1F739329E24 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		79000ACAEFDEF90A65883CFF /* Equatability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatability.swift; sourceTree = "<group>"; };
 		79000D137AE92FC2BBAA3C62 /* LazyFaking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyFaking.swift; sourceTree = "<group>"; };
 		79000E1511EB1430092FC38D /* GentleUnwrapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GentleUnwrapping.swift; sourceTree = "<group>"; };
@@ -201,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				790001545A1E24B77B09637F /* MapViewDelegate.swift */,
+				790001030A05FDFD2470DDA7 /* FlightVisualizationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -220,6 +227,7 @@
 			children = (
 				790007F4085C6C0CECB12703 /* Geolocator.swift */,
 				79000E5B44024AB0E4C1B6D2 /* GeolocatorSpec.swift */,
+				790008518E6DD1F739329E24 /* Route.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,6 +335,7 @@
 				81086A403F9FC414B9E2E8CB /* IATAService */,
 				81086E4FAD5E4E0D04F0F95B /* SchipolService */,
 				810867AFABE8166BB686ADBD /* Utilities */,
+				790001A485670B30511AC694 /* FlowController.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -610,6 +619,9 @@
 				79000A32DAE588F5178CC8FD /* MapViewController.swift in Sources */,
 				7900006D4F7E45D0236801C4 /* MapViewDelegate.swift in Sources */,
 				790006AD7C97B14DD6719802 /* Geolocator.swift in Sources */,
+				79000D49D13F3500608747E7 /* FlightVisualizationViewModel.swift in Sources */,
+				7900043FC44B5112CFB85CF1 /* Route.swift in Sources */,
+				790004F8689BB9A10FF9D187 /* FlowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

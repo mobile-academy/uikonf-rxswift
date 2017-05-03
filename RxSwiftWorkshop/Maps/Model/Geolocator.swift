@@ -9,7 +9,7 @@ import RxSwift
 
 protocol SystemGeolocator {
     var isGeocoding: Bool { get }
-    func geocodeAddressString(_ addressString: String, completionHandler: @escaping CLGeocodeCompletionHandler)
+    func geocodeAddressString(_ addressString: String, in region: CLRegion?, completionHandler: @escaping CLGeocodeCompletionHandler)
     func cancelGeocode()
 }
 
@@ -30,10 +30,16 @@ final class Geolocator {
         self.geolocator = geolocator
     }
 
+    private let region = CLCircularRegion(
+        center: CLLocationCoordinate2D(latitude: 52.310475, longitude: 4.768158),
+        radius: CLLocationDistance(100_000),
+        identifier: "amsterdam"
+    )
+
     func geolocate(address: String) -> Observable<CLLocation> {
         return Observable.create { [weak self] observer in
             guard let `self` = self else { return Disposables.create() }
-            self.geolocator.geocodeAddressString(address, completionHandler: { maybePlacemark, maybeError in
+            self.geolocator.geocodeAddressString(address, in: self.region, completionHandler: { maybePlacemark, maybeError in
                 if let placemark = maybePlacemark?.first?.location {
                     observer.on(.next(placemark))
                     observer.on(.completed)

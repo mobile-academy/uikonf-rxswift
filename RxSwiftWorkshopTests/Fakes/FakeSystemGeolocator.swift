@@ -13,25 +13,29 @@ final class FakeSystemGeolocator: SystemGeolocator, Mock {
 
     private(set) var isGeocoding: Bool = false
 
-    struct Identifiers {
+    enum Identifiers {
         static let geocodeAddressString = "geocodeAddressString"
         static let cancelGeocode = "cancelGeocode"
     }
+
+    var shouldReturnAtAll = true
 
     var fixedLocation: CLLocation?
     var fixedError: Error?
 
     var storage: [RecordedCall] = []
 
-    func geocodeAddressString(_ addressString: String, completionHandler: @escaping CLGeocodeCompletionHandler) {
+    func geocodeAddressString(_ addressString: String, in region: CLRegion? = nil, completionHandler: @escaping CLGeocodeCompletionHandler) {
         recordCall(withIdentifier: Identifiers.geocodeAddressString, arguments: [addressString])
         isGeocoding = true
-        if let location = fixedLocation {
-            completionHandler([MKPlacemark(coordinate: location.coordinate)], nil)
-        } else {
-            completionHandler(nil, fixedError)
+        if shouldReturnAtAll {
+            if let location = fixedLocation {
+                completionHandler([MKPlacemark(coordinate: location.coordinate)], nil)
+            } else {
+                completionHandler(nil, fixedError)
+            }
+            isGeocoding = false
         }
-        isGeocoding = false
     }
 
     func cancelGeocode() {

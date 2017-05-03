@@ -6,13 +6,18 @@
 import Foundation
 import UIKit
 import MapKit
+import RxSwift
 
 final class MapViewController: UIViewController {
 
-    private let delegate = MapViewDelegate()
+    private let disposeBag = DisposeBag()
+    private let delegate: MapViewDelegate
+    private let viewModel: FlightVisualisationViewModel
 
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    init(viewModel: FlightVisualisationViewModel, delegate: MapViewDelegate) {
+        self.delegate = delegate
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder _: NSCoder) {
@@ -23,5 +28,13 @@ final class MapViewController: UIViewController {
         let mapView = MKMapView(frame: .zero)
         mapView.delegate = delegate
         view = mapView
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.route.subscribe(onNext: { route in
+            print(route)
+        }).disposed(by: disposeBag)
+        viewModel.refresh()
     }
 }

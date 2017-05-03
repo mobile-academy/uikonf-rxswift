@@ -10,3 +10,10 @@ struct FlightFormatter {
         return "\(flight.serviceType.description) | (\(flight.statuses.map { $0.description }.joined(separator: ", ")))"
     }
 }
+
+struct AirportFormatter {
+
+    func geolocalizableAddress(from airport: Airport) -> String {
+        return "\(airport.name)"
+    }
+}

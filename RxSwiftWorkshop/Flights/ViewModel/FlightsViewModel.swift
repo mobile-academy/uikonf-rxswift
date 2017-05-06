@@ -9,6 +9,7 @@ import RxCocoa
 
 protocol FlightsDisplayable {
     var flights: Variable<[Flight]> { get }
+    func flights(filteredBy queryObservable: Observable<String>) -> Observable<[Flight]>
     func refresh() -> Disposable
 }
 
@@ -35,6 +36,22 @@ final class FlightsViewModel: FlightsDisplayable {
 
     func refresh() -> Disposable {
         return flightsCall.subscribe()
+    }
+
+    func flights(filteredBy queryObservable: Observable<String>) -> Observable<[Flight]> {
+        return Observable.combineLatest(queryObservable, flights.asObservable()) {
+            (query: String, flights: [Flight]) -> [Flight] in
+            flights.filter { self.isFlight($0, matching: query) }
+        }
+    }
+
+    private func isFlight(_ flight: Flight, matching query: String) -> Bool {
+        guard !query.isEmpty else { return true }
+        let lowerQuery = query.lowercased()
+        let isNameMatchingQuery = flight.name.lowercased().contains(lowerQuery)
+        let isAnyStatusMatchingQuery = !flight.statuses.filter { status in status.description.lowercased().contains(lowerQuery) }.isEmpty
+        let isAnyDestinationMatchingQuery: Bool = !(flight.destinations ?? []).filter { airport in airport.name.lowercased().contains(lowerQuery) }.isEmpty
+        return isNameMatchingQuery || isAnyStatusMatchingQuery || isAnyDestinationMatchingQuery
     }
 
     private func updateAirports(for flights: [Flight]) -> Observable<[Flight]> {

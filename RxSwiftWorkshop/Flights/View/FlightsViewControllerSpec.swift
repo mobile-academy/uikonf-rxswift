@@ -63,6 +63,10 @@ final class FlightsViewControllerSpec: QuickSpec {
                     flightsViewModel.verifyCall(withIdentifier: "refresh")
                 }
 
+                it("should call flights filtration method without any filtering query") {
+                    flightsViewModel.verifyCall(withIdentifier: "flightsFilteredBy", arguments: [""])
+                }
+
                 it("should have one flight in view model") {
                     expect(flightsViewModel.flights.value.count).to(equal(1))
                 }

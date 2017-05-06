@@ -44,23 +44,56 @@ final class FlightsViewModelSpec: QuickSpec {
                         iataService.airportObservable = scheduler.createColdObservable([next(0, self.sampleAirport()), completed(0)]).asObservable()
                         sut = FlightsViewModel(schipolCallable: schipolService, iataCallable: iataService)
                         sut.refresh().disposed(by: disposeBag)
-                        scheduler.start()
                     }
 
                     afterEach {
                         disposeBag = nil
                     }
 
-                    it("should have 1 flight") {
-                        expect(sut.flights.value.count).to(equal(1))
+                    describe("without filtering") {
+                        beforeEach {
+                            scheduler.start()
+                        }
+
+                        it("should have 1 flight") {
+                            expect(sut.flights.value.count).to(equal(1))
+                        }
+
+                        it("should match flight id") {
+                            expect(sut.flights.value.first?.id).to(equal(self.sampleFlights().first?.id))
+                        }
+
+                        it("should match destination airports") {
+                            expect(sut.flights.value.first?.destinations).to(equal([self.sampleAirport()]))
+                        }
                     }
 
-                    it("should match flight id") {
-                        expect(sut.flights.value.first?.id).to(equal(self.sampleFlights().first?.id))
-                    }
+                    describe("with filtering") {
+                        var observer: TestableObserver<[Flight]>!
 
-                    it("should match destination airports") {
-                        expect(sut.flights.value.first?.destinations).to(equal([self.sampleAirport()]))
+                        context("matching query") {
+                            beforeEach {
+                                observer = scheduler.start {
+                                    sut.flights(filteredBy: .just("Chopin"))
+                                }
+                            }
+
+                            it("should return correct matching flights count") {
+                                expect(observer.events[0].value.element?.count).to(equal(1))
+                            }
+                        }
+
+                        context("not matching query") {
+                            beforeEach {
+                                observer = scheduler.start {
+                                    sut.flights(filteredBy: .just("Strauss"))
+                                }
+                            }
+
+                            it("should return zero matching flights") {
+                                expect(observer.events[0].value.element?.count).to(equal(0))
+                            }
+                        }
                     }
                 }
             }

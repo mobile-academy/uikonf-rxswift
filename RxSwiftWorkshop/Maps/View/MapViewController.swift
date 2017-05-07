@@ -37,7 +37,7 @@ final class MapViewController: UIViewController {
             let coordinates = [route.start, route.end].map { $0.coordinate }
             coordinates.withUnsafeBufferPointer { pointer in
                 guard let unsafePointer = pointer.baseAddress else { return }
-                var polyline = MKPolyline(coordinates: unsafePointer, count: pointer.count)
+                let polyline = MKPolyline(coordinates: unsafePointer, count: pointer.count)
                 self.mapView.add(polyline, level: .aboveLabels)
             }
             self.mapView.setCenter(route.position.coordinate, animated: true)

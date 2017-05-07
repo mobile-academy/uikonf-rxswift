@@ -10,7 +10,7 @@ final class MapViewDelegate: NSObject, MKMapViewDelegate {
 
     func mapView(_: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let polyline = overlay as? MKPolyline else { return MKOverlayRenderer(overlay: overlay) }
-        var polylineRenderer = MKPolylineRenderer(overlay: overlay)
+        let polylineRenderer = MKPolylineRenderer(overlay: polyline)
         polylineRenderer.strokeColor = .blue
         polylineRenderer.lineWidth = 5
         return polylineRenderer

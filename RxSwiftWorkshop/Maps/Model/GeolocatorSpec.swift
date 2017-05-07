@@ -55,7 +55,6 @@ class GeolocatorSpec: QuickSpec {
             it("should return error from its SystemGeolocator") {
                 enum Error: Swift.Error { case someError }
                 guard case let (sut?, disposeBag?, systemGeolocator?) = unwrap(sut, disposeBag, systemGeolocator) else { return }
-                let location = CLLocation(latitude: 123.123, longitude: 132.132)
                 systemGeolocator.fixedError = Error.someError
                 var result: Error?
                 sut.geolocate(address: "Valencia Airport").subscribe(onError: { result = $0 as? Error }).disposed(by: disposeBag)
@@ -64,7 +63,6 @@ class GeolocatorSpec: QuickSpec {
 
             it("should return proper error from its SystemGeolocator when it acts broken") {
                 guard case let (sut?, disposeBag?) = unwrap(sut, disposeBag) else { return }
-                let location = CLLocation(latitude: 123.123, longitude: 132.132)
                 var result: Geolocator.Error?
                 sut.geolocate(address: "Valencia Airport").subscribe(onError: { result = $0 as? Geolocator.Error }).disposed(by: disposeBag)
                 expect(result).to(equal(Geolocator.Error.geolocationFailedForUnknownReason))
@@ -73,7 +71,6 @@ class GeolocatorSpec: QuickSpec {
             it("should cancel geocoding on subscription disposing") {
                 guard case let (sut?, systemGeolocator?) = unwrap(sut, systemGeolocator) else { return }
                 systemGeolocator.shouldReturnAtAll = false
-                expect(systemGeolocator.isGeocoding).to(beFalse())
                 let disposable = sut.geolocate(address: "Valencia Airport").subscribe()
                 expect(systemGeolocator.isGeocoding).to(beTrue())
                 disposable.dispose()

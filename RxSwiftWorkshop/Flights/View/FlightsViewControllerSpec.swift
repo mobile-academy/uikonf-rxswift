@@ -27,7 +27,7 @@ final class FlightsViewControllerSpec: QuickSpec {
                 observable = scheduler.createColdObservable([next(0, [self.sampleFlight()]), completed(0)])
 
                 flightsViewModel = FakeFlightsViewModel(observable: observable.asObservable())
-                sut = FlightsViewController(viewModel: flightsViewModel)
+                sut = FlightsViewController(viewModel: flightsViewModel, showDetailsViewController: { _, _ in })
             }
 
             afterEach {
@@ -56,7 +56,7 @@ final class FlightsViewControllerSpec: QuickSpec {
                 }
 
                 it("should disallow selection") {
-                    expect(tableView.allowsSelection).to(beFalse())
+                    expect(tableView.allowsSelection).to(beTrue())
                 }
 
                 it("should refresh items at view did appear") {

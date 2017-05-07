@@ -14,14 +14,16 @@ final class FlightsViewController: UIViewController {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         return tableView
     }()
 
     let viewModel: FlightsDisplayable
+    private let showDetailsViewController: (Flight, UIViewController) -> Void
 
-    init(viewModel: FlightsDisplayable) {
+    init(viewModel: FlightsDisplayable, showDetailsViewController: @escaping (Flight, UIViewController) -> Void) {
         self.viewModel = viewModel
+        self.showDetailsViewController = showDetailsViewController
         super.init(nibName: nil, bundle: nil)
         title = "Flights"
     }
@@ -43,6 +45,15 @@ final class FlightsViewController: UIViewController {
             .flights.asObservable()
             .map { flights -> [FlightSectionModel] in [FlightSectionModel(items: flights)] }
             .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+
+        tableView.rx
+            .itemSelected
+            .subscribe(onNext: { [unowned self] indexPath in
+                if let flight = self.viewModel.flights.value[safe: indexPath.row] {
+                    self.showDetailsViewController(flight, self)
+                }
+            })
             .disposed(by: disposeBag)
     }
 

@@ -18,12 +18,19 @@ final class FlightsViewController: UIViewController {
         return tableView
     }()
 
+    private var flightsFilter: FlightsFilter?
+
     let viewModel: FlightsDisplayable
     private let showDetailsViewController: (Flight, UIViewController) -> Void
+    private let showFilterViewController: (UIViewController, @escaping FilterChangeCallback) -> Void
 
-    init(viewModel: FlightsDisplayable, showDetailsViewController: @escaping (Flight, UIViewController) -> Void) {
+    init(viewModel: FlightsDisplayable,
+         showDetailsViewController: @escaping (Flight, UIViewController) -> Void,
+         showFilterViewController: @escaping (UIViewController, @escaping FilterChangeCallback) -> Void
+    ) {
         self.viewModel = viewModel
         self.showDetailsViewController = showDetailsViewController
+        self.showFilterViewController = showFilterViewController
         super.init(nibName: nil, bundle: nil)
         title = "Flights"
     }
@@ -55,11 +62,24 @@ final class FlightsViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+
+        configureFilterButton()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.refresh().disposed(by: disposeBag)
+        viewModel.refresh(with: flightsFilter).disposed(by: disposeBag)
+    }
+
+    private func configureFilterButton() {
+        let filterBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: nil, action: nil)
+        filterBarButtonItem.rx.tap.subscribe(onNext: {
+            self.showFilterViewController(self) {
+                [weak self] filter in
+                self?.flightsFilter = filter
+            }
+        }).disposed(by: disposeBag)
+        navigationItem.leftBarButtonItem = filterBarButtonItem
     }
 
     private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<FlightSectionModel> {

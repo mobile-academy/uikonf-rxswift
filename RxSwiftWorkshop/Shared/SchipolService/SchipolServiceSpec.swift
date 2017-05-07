@@ -36,27 +36,57 @@ final class SchipolServiceSpec: QuickSpec {
             }
 
             describe("flights endpoint") {
-                var observer: TestableObserver<[Flight]>!
 
                 beforeEach {
                     client.observable = scheduler.createColdObservable([next(0, self.sampleJSON()), completed(0)]).asObservable()
-                    observer = scheduler.start {
-                        sut.flights()
+                }
+
+                context("without filter parameters") {
+                    beforeEach {
+                        _ = scheduler.start {
+                            sut.flights()
+                        }
+                    }
+
+                    it("should call proper request") {
+                        let urlString = SchipolService.Constants.baseURL.absoluteString + "flights?app_id=\(keys.schipholAPIAppID)&app_key=\(keys.schipholAPIAppKey)"
+                        var request = URLRequest(url: URL(string: urlString)!)
+                        request.httpMethod = "GET"
+                        request.addValue("v3", forHTTPHeaderField: "ResourceVersion")
+                        client.verifyCall(withIdentifier: "call", arguments: [request])
                     }
                 }
 
-                it("should call proper request") {
-                    let urlString = SchipolService.Constants.baseURL.absoluteString + "flights?app_id=\(keys.schipholAPIAppID)&app_key=\(keys.schipholAPIAppKey)"
-                    var request = URLRequest(url: URL(string: urlString)!)
-                    request.httpMethod = "GET"
-                    request.addValue("v3", forHTTPHeaderField: "ResourceVersion")
-                    client.verifyCall(withIdentifier: "call", arguments: [request])
+                context("with filter parameters") {
+                    var queryContext: SchipolQueryContext!
+
+                    beforeEach {
+                        queryContext = SchipolQueryContextStub()
+                        _ = scheduler.start {
+                            sut.flights(with: queryContext)
+                        }
+                    }
+
+                    it("should call proper request") {
+                        let urlString = SchipolService.Constants.baseURL.absoluteString
+                            + "flights?app_id=\(keys.schipholAPIAppID)&app_key=\(keys.schipholAPIAppKey)"
+                            + "\(queryContext.fromDate != nil ? "&fromdate=\(queryContext.fromDate!)" : "")"
+                            + "\(queryContext.toDate != nil ? "&todate=\(queryContext.toDate!)" : "")"
+                        var request = URLRequest(url: URL(string: urlString)!)
+                        request.httpMethod = "GET"
+                        request.addValue("v3", forHTTPHeaderField: "ResourceVersion")
+                        client.verifyCall(withIdentifier: "call", arguments: [request])
+                    }
                 }
 
                 describe("model from response") {
+                    var observer: TestableObserver<[Flight]>!
                     var flights: [Flight]?
 
                     beforeEach {
+                        observer = scheduler.start {
+                            sut.flights()
+                        }
                         flights = observer.events[0].value.element
                     }
 

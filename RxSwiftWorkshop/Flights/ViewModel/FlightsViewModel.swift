@@ -9,7 +9,13 @@ import RxCocoa
 
 protocol FlightsDisplayable {
     var flights: Variable<[Flight]> { get }
-    func refresh() -> Disposable
+    func refresh(with filter: FlightsFilter?) -> Disposable
+}
+
+extension FlightsDisplayable {
+    func refresh() -> Disposable {
+        return refresh(with: nil)
+    }
 }
 
 final class FlightsViewModel: FlightsDisplayable {
@@ -18,22 +24,20 @@ final class FlightsViewModel: FlightsDisplayable {
     let iataCallable: IATACallable
 
     let flights: Variable<[Flight]>
-    private lazy var flightsCall: Observable<[Flight]> = {
-        self.schipolCallable
-            .flights()
-            .flatMap { flights in self.updateAirports(for: flights) }
-            .do(onError: { print($0) })
-            .catchErrorJustReturn([])
-    }()
 
     init(schipolCallable: SchipolCallable, iataCallable: IATACallable) {
         self.schipolCallable = schipolCallable
         self.iataCallable = iataCallable
         flights = Variable([])
-        flightsCall.bind(to: flights).disposed(by: disposeBag)
     }
 
-    func refresh() -> Disposable {
+    func refresh(with filter: FlightsFilter?) -> Disposable {
+        let flightsCall = schipolCallable
+            .flights(with: filter)
+            .flatMap { flights in self.updateAirports(for: flights) }
+            .do(onError: { print($0) })
+            .catchErrorJustReturn([])
+        flightsCall.bind(to: flights).disposed(by: disposeBag)
         return flightsCall.subscribe()
     }
 

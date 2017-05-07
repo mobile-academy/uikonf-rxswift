@@ -24,8 +24,14 @@ final class FlowController {
     func showMapViewController(flight: Flight, from fromViewController: UIViewController) {
         let geolocator = Geolocator()
         let flightVisualisationViewModel = FlightVisualisationViewModel(flight: flight, geolocator: geolocator)
+        let directionsService = DirectionsService()
+        let routeVisualisationViewModel = AlternativeRouteVisualisationViewModel(directionsService: directionsService)
         let delegate = MapViewDelegate()
-        let mapViewController = MapViewController(viewModel: flightVisualisationViewModel, delegate: delegate)
+        let mapViewController = MapViewController(
+            flightsViewModel: flightVisualisationViewModel,
+            routeViewModel: routeVisualisationViewModel,
+            delegate: delegate
+        )
         fromViewController.navigationController?.pushViewController(mapViewController, animated: true)
     }
 }

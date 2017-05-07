@@ -21,27 +21,38 @@ final class FlightVisualisationViewModel: FlightVisualisation {
         case notEnoughInformationToVisualiseFlight
     }
 
-    private let geolocator: Geolocator
+    private let geolocator: GeolocationCallable
     private let geocodingCache: Observable<CLLocation>
     private let flight: Flight
     private let formatter = AirportFormatter()
 
     private let internalRoute = PublishSubject<Route>()
     var route: Observable<Route> {
-        return geocodingCache.flatMap { [weak self] location -> Observable<Route> in
-            guard let `self` = self else { return .error(Error.notEnoughInformationToVisualiseFlight) }
-            // TODO: should take into consideration whether it's departing or arriving
-            // TODO: also, take care of this force unwrap
-            let route = Route(
-                start: Constants.amsterdamLocation,
-                position: self.calculateFlightPosition(forOtherEnd: location),
-                end: location
-            )
-            return .just(route)
-        }
+        return geocodingCache
+            .flatMap { [weak self] location -> Observable<Route> in
+                guard let `self` = self else {
+                    return .error(Error.notEnoughInformationToVisualiseFlight)
+                }
+                var start: CLLocation?
+                var end: CLLocation?
+                let isNotArriving = self.flight.statuses.filter({ $0.isArriving }).isEmpty
+                let isNotDeparting = self.flight.statuses.filter({ $0.isDeparting }).isEmpty
+                if !isNotArriving {
+                    start = location
+                    end = Constants.amsterdamLocation
+                } else if !isNotDeparting {
+                    start = Constants.amsterdamLocation
+                    end = location
+                }
+                if let start = start, let end = end {
+                    let route = Route(start: start, end: end)
+                    return .just(route)
+                }
+                return .empty()
+            }
     }
 
-    init(flight: Flight, geolocator: Geolocator) {
+    init(flight: Flight, geolocator: GeolocationCallable) {
         self.flight = flight
         self.geolocator = geolocator
         if let destination = flight.destinations?.first {
@@ -51,10 +62,5 @@ final class FlightVisualisationViewModel: FlightVisualisation {
         } else {
             geocodingCache = .error(Error.notEnoughInformationToVisualiseFlight)
         }
-    }
-
-    private func calculateFlightPosition(forOtherEnd _: CLLocation) -> CLLocation {
-        // TODO: implement
-        return Constants.amsterdamLocation
     }
 }

@@ -40,3 +40,23 @@ extension FlightStatus: CustomStringConvertible {
         return rawValue
     }
 }
+
+extension FlightStatus {
+    var isArriving: Bool {
+        switch self {
+        case .airborne, .expectedLanding, .flightInDutchAirspace, .landed, .firstBaggageSoon, .arrived, .diverted:
+            return true
+        default:
+            return false
+        }
+    }
+
+    var isDeparting: Bool {
+        switch self {
+        case .delayed, .waitInLounge, .gateOpen, .boarding, .gateClosing, .gateClosed, .departed, .gateChange:
+            return true
+        default:
+            return false
+        }
+    }
+}

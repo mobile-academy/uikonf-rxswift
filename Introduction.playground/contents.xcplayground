@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='raw'>
+<playground version='6.0' target-platform='ios' display-mode='rendered'>
     <pages>
-        <page name='1. RxSwift and Bindings'/>
-        <page name='2. Transforming Events'/>
-        <page name='3. Filtering Events'/>
-        <page name='4. Combining Signals'/>
-        <page name='5. Completion and Errors'/>
+        <page name='1. Observables and Observers'/>
+        <page name='2. Transforming Sequences'/>
+        <page name='3. Filtering Sequences'/>
+        <page name='4. Completion and Errors'/>
+        <page name='5. Memory management - Part One'/>
+        <page name='6. Memory Management - Part Two'/>
+        <page name='7. Putting it all together'/>
     </pages>
 </playground>

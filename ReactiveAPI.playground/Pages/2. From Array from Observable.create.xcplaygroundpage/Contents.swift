@@ -9,7 +9,13 @@ let integers = [10, 20, 30, 40, 50]
 
 extension Observable {
     static func myFrom(array: Array<E>) -> Observable<E> {
-        return Observable.empty()
+        return Observable<E>.create { observer in
+            for elem in array {
+                observer.onNext(elem)
+            }
+            observer.onCompleted()
+            return Disposables.create()
+        }
     }
 }
 

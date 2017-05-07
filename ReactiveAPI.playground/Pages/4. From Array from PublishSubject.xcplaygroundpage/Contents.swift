@@ -13,4 +13,9 @@ subjectPublishing.subscribe {
     print($0)
 }.disposed(by: disposeBag)
 
+for elem in integers {
+    subjectPublishing.onNext(elem)
+}
+subjectPublishing.onCompleted()
+
 //: [Next: From Array from ReplaySubject](@next)

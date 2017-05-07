@@ -7,7 +7,11 @@ let elem = "🙈"
 
 extension Observable {
     static func myJust(element: E) -> Observable<E> {
-        return .empty()
+        return Observable<E>.create { observer in
+            observer.onNext(element)
+            observer.onCompleted()
+            return Disposables.create()
+        }
     }
 }
 

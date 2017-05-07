@@ -59,16 +59,28 @@ final class MapViewDelegate: NSObject, UserLocationProviding, MKMapViewDelegate,
     //         adn therefore can contain additional logic, like the authorization handling.
     // STARTING POINTS: replace the `.empty()` and fill in the bodies of three empty delegate methods.
 
+    private let userLocationSubject = PublishSubject<UserLocation>()
+
     var userLocation: Observable<UserLocation> {
-        return .empty()
+        if authorizationStatusCheck() == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        return userLocationSubject.asObservable()
     }
 
-    public func locationManager(_: CLLocationManager, didChangeAuthorization _: CLAuthorizationStatus) {
+    public func locationManager(_: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            userLocationSubject.onNext(.possible)
+        } else {
+            userLocationSubject.onNext(.forbidden)
+        }
     }
 
-    public func mapView(_: MKMapView, didUpdate _: MKUserLocation) {
+    public func mapView(_: MKMapView, didUpdate userLocation: MKUserLocation) {
+        userLocationSubject.onNext(.update(userLocation))
     }
 
-    public func mapView(_: MKMapView, didFailToLocateUserWithError _: Error) {
+    public func mapView(_: MKMapView, didFailToLocateUserWithError error: Error) {
+        userLocationSubject.onNext(.failed(error))
     }
 }

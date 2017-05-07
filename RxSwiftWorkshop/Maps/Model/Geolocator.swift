@@ -39,7 +39,7 @@ final class Geolocator: GeolocationCallable {
         identifier: "amsterdam"
     )
 
-    func geolocate(address _: String) -> Observable<CLLocation> {
+    func geolocate(address: String) -> Observable<CLLocation> {
         // TODO: EXERCISE 1: GEOCODER
         // Problem: Write code that transforms the completionBlock-based geolocator API into observable-based API
         // Requirement: There might be only one geolocating request executing at the time. On the end of subscription,
@@ -49,6 +49,27 @@ final class Geolocator: GeolocationCallable {
         // HINT 2: Use `Error.geolocationFailedForUnknownReason` to handle the case when
         //         there's no information what to return.
         // STARTING POINT: Replace the Disposables.create()
-        return .empty()
+        return Observable<CLLocation>.create { [weak self] observer in
+            guard let `self` = self else { return Disposables.create() }
+            if self.geolocator.isGeocoding {
+                self.geolocator.cancelGeocode()
+            }
+            self.geolocator.geocodeAddressString(address, in: self.region, completionHandler: { maybePlacemark, maybeError in
+                if let placemark = maybePlacemark?.first?.location {
+                    observer.on(.next(placemark))
+                    observer.on(.completed)
+                } else if let error = maybeError {
+                    observer.on(.error(error))
+                } else {
+                    observer.on(.error(Error.geolocationFailedForUnknownReason))
+                }
+            })
+            return Disposables.create { [weak self] in
+                guard let `self` = self else { return }
+                if self.geolocator.isGeocoding {
+                    self.geolocator.cancelGeocode()
+                }
+            }
+        }
     }
 }

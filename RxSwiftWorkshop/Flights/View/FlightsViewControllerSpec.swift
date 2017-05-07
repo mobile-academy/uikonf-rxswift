@@ -47,12 +47,12 @@ final class FlightsViewControllerSpec: QuickSpec {
                 var tableView: UITableView!
 
                 beforeEach {
+                    scheduler.start()
                     // `sut.view` calls loadView & viewDidLoad
                     tableView = sut.view as! UITableView
                     // set frame to ensure table displays cells
                     sut.view.frame = CGRect(x: 0, y: 0, width: 320, height: 100)
                     sut.viewDidAppear(false)
-                    scheduler.start()
                 }
 
                 it("should disallow selection") {
@@ -72,6 +72,10 @@ final class FlightsViewControllerSpec: QuickSpec {
 
                     beforeEach {
                         cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
+                    }
+
+                    it("should have one cell visible") {
+                        expect(tableView.visibleCells.count).to(equal(1))
                     }
 
                     it("should display one cell") {

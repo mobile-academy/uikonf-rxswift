@@ -9,7 +9,7 @@ import Marshal
 import Keys
 
 protocol SchipolCallable {
-    func flights() -> Observable<[Flight]>
+    func flights(with context: SchipolQueryContext?) -> Observable<[Flight]>
 }
 
 struct SchipolService: SchipolCallable {
@@ -31,9 +31,10 @@ struct SchipolService: SchipolCallable {
         requestBuilder = URLRequestBuilder(base: Constants.baseURL)
     }
 
-    func flights() -> Observable<[Flight]> {
+    func flights(with context: SchipolQueryContext? = nil) -> Observable<[Flight]> {
+        let parameters = queryParameters() + (context?.queryItems() ?? [])
         return requestBuilder
-            .build(for: "flights", with: queryParameters(), headers: headers()).asObservable()
+            .build(for: "flights", with: parameters, headers: headers()).asObservable()
             .flatMap(client.call)
             .map { json -> [Flight] in try json.value(for: "flights") }
     }

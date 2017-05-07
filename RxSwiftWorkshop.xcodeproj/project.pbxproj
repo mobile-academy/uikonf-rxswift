@@ -12,6 +12,7 @@
 		438596771EABC06800776FD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438596751EABC06800776FD3 /* LaunchScreen.storyboard */; };
 		466B1D2D1EBA095C00817988 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466B1D2C1EBA095C00817988 /* CoreLocation.framework */; };
 		466B1D2F1EBA096200817988 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466B1D2E1EBA096200817988 /* MapKit.framework */; };
+		5CA88F91BE7D4BEB439F0F93 /* Pods_Workshops_RxSwiftWorkshop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51FE8AD83CB5E93D521AE35 /* Pods_Workshops_RxSwiftWorkshop.framework */; };
 		7900006D4F7E45D0236801C4 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790001545A1E24B77B09637F /* MapViewDelegate.swift */; };
 		79000394FC6EE8D3547FF94C /* FakeSystemGeolocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000095B20383E503946982 /* FakeSystemGeolocator.swift */; };
 		7900039827B790F1D721DD64 /* Equatability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000ACAEFDEF90A65883CFF /* Equatability.swift */; };
@@ -24,13 +25,12 @@
 		79000AC0B90E0EF08F5D532F /* LazyFaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000D137AE92FC2BBAA3C62 /* LazyFaking.swift */; };
 		79000D49D13F3500608747E7 /* FlightVisualizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790001030A05FDFD2470DDA7 /* FlightVisualizationViewModel.swift */; };
 		79000EE78747ACBE81271356 /* GentleUnwrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000E1511EB1430092FC38D /* GentleUnwrapping.swift */; };
-		5CA88F91BE7D4BEB439F0F93 /* Pods_Workshops_RxSwiftWorkshop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51FE8AD83CB5E93D521AE35 /* Pods_Workshops_RxSwiftWorkshop.framework */; };
-		7900060EEF468A2C8E4FF41E /* ModelFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790008337D23D1BEF8E9DB2E /* ModelFormatters.swift */; };
 		797BA4D6019618771E9F1896 /* Pods_Workshops_RxSwiftWorkshopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F6181449532051D618E099 /* Pods_Workshops_RxSwiftWorkshopTests.framework */; };
 		8108601AF59ED8EA7EE407F8 /* FakeIATAKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086A9C451D010A64B689E3 /* FakeIATAKeys.swift */; };
 		8108603B301829C5B1DE8FE3 /* FlightsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810862A374CA8980AC5FA5AC /* FlightsViewControllerSpec.swift */; };
 		8108610F6FE2FD5FD91B281F /* FlightStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086A0C2C6A868E67176AFD /* FlightStatus.swift */; };
 		810861CAB860DCB18B42068C /* FlightSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086364429E48A3BCD726A0 /* FlightSectionModel.swift */; };
+		810862E32D85F2C5DAF97220 /* FlightsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086960CD53A2B17A7E24C0 /* FlightsFilter.swift */; };
 		8108636334A40F95E01181C5 /* SchipolKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086B91EBCF3C6BF32ED2C5 /* SchipolKeys.swift */; };
 		810863652010F26450CB6EAD /* FakeSchipolKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810865FB57CDCF4E24098AE8 /* FakeSchipolKeys.swift */; };
 		8108653F018E18720710D044 /* JSONAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810864E618DDCD1B5EE835C1 /* JSONAPIClient.swift */; };
@@ -56,6 +56,8 @@
 		81086F32E27BAF6256017E4E /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086BF26C15B7517496E17B /* URLRequestBuilder.swift */; };
 		81086F39D38AE8AFE2907CBC /* IATAKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086AF0CD88320B6F0866A3 /* IATAKeys.swift */; };
 		81086F8FDE9D76E29B82F4B6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108613B491818888084903B /* Utilities.swift */; };
+		81086FB069D63FD2986274C1 /* SchipolQueryContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086417210C6DDDF8F468A6 /* SchipolQueryContext.swift */; };
+		81086FC04A9B807AF61C0326 /* SchipolQueryContextStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086FDFF79535647FA0B4DF /* SchipolQueryContextStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,7 @@
 		81086313D507564EC6BEABA3 /* Marshal+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Marshal+Date.swift"; sourceTree = "<group>"; };
 		81086364429E48A3BCD726A0 /* FlightSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightSectionModel.swift; sourceTree = "<group>"; };
 		810863D73FF8377628BEF97B /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
+		81086417210C6DDDF8F468A6 /* SchipolQueryContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchipolQueryContext.swift; sourceTree = "<group>"; };
 		8108643841D67375A03916C5 /* FlightsViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsViewModelSpec.swift; sourceTree = "<group>"; };
 		810864E618DDCD1B5EE835C1 /* JSONAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAPIClient.swift; sourceTree = "<group>"; };
 		810864EC274D3124BAC8B87A /* Airline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airline.swift; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 		8108673F8E9FB008AA86C7ED /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		810868BA5E1D2AECEF882D81 /* IATAServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IATAServiceSpec.swift; sourceTree = "<group>"; };
 		810868EA7811273AB0733B1D /* FlightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightCell.swift; sourceTree = "<group>"; };
+		81086960CD53A2B17A7E24C0 /* FlightsFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsFilter.swift; sourceTree = "<group>"; };
 		810869810F132403220F0BDA /* SchipolService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchipolService.swift; sourceTree = "<group>"; };
 		81086A0A9C3339F5ED32DBBE /* IATAService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IATAService.swift; sourceTree = "<group>"; };
 		81086A0C2C6A868E67176AFD /* FlightStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightStatus.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 		81086D628648AC448F120695 /* FlightsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsViewController.swift; sourceTree = "<group>"; };
 		81086D942595838503674373 /* SchipolServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchipolServiceSpec.swift; sourceTree = "<group>"; };
 		81086F5AADB18E04687CC2DE /* URLRequestBuilderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestBuilderSpec.swift; sourceTree = "<group>"; };
+		81086FDFF79535647FA0B4DF /* SchipolQueryContextStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchipolQueryContextStub.swift; sourceTree = "<group>"; };
 		88F6181449532051D618E099 /* Pods_Workshops_RxSwiftWorkshopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workshops_RxSwiftWorkshopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE08F0CDC246F296483FCB /* Pods-Workshops-RxSwiftWorkshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshops-RxSwiftWorkshop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Workshops-RxSwiftWorkshop/Pods-Workshops-RxSwiftWorkshop.release.xcconfig"; sourceTree = "<group>"; };
 		8DA6CFAB6942CE49EE6D964A /* Pods-Workshops-RxSwiftWorkshopTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshops-RxSwiftWorkshopTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Workshops-RxSwiftWorkshopTests/Pods-Workshops-RxSwiftWorkshopTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,7 +142,7 @@
 			files = (
 				466B1D2F1EBA096200817988 /* MapKit.framework in Frameworks */,
 				466B1D2D1EBA095C00817988 /* CoreLocation.framework in Frameworks */,
-				A6C525EBCF52E3932667BFE5 /* Pods_Workshops_RxSwiftWorkshop.framework in Frameworks */,
+				A6C525EBCF52E3932667BFE5,
 				5CA88F91BE7D4BEB439F0F93 /* Pods_Workshops_RxSwiftWorkshop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +204,17 @@
 			path = RxSwiftWorkshop;
 			sourceTree = "<group>";
 		};
+		4695771E8A77AAC4D050E61F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F9F56D9A4C5B3EC73781EA13 /* Pods-Workshops-RxSwiftWorkshop.debug.xcconfig */,
+				8AFE08F0CDC246F296483FCB /* Pods-Workshops-RxSwiftWorkshop.release.xcconfig */,
+				E0FE77B470BFC3082C9C6434 /* Pods-Workshops-RxSwiftWorkshopTests.debug.xcconfig */,
+				8DA6CFAB6942CE49EE6D964A /* Pods-Workshops-RxSwiftWorkshopTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7900007DEBFF50D4BCF590F0 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,17 +260,6 @@
 				79000385CB3CBCB7117BFFC3 /* ViewModel */,
 			);
 			path = Maps;
-            sourceTree = "<group>";
-        };
-		4695771E8A77AAC4D050E61F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F9F56D9A4C5B3EC73781EA13 /* Pods-Workshops-RxSwiftWorkshop.debug.xcconfig */,
-				8AFE08F0CDC246F296483FCB /* Pods-Workshops-RxSwiftWorkshop.release.xcconfig */,
-				E0FE77B470BFC3082C9C6434 /* Pods-Workshops-RxSwiftWorkshopTests.debug.xcconfig */,
-				8DA6CFAB6942CE49EE6D964A /* Pods-Workshops-RxSwiftWorkshopTests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		810860E938CE060EA33D96DD /* Model */ = {
@@ -360,6 +365,7 @@
 			children = (
 				81086C88BF568A2A66DF5D46 /* FlightsViewModel.swift */,
 				8108643841D67375A03916C5 /* FlightsViewModelSpec.swift */,
+				81086960CD53A2B17A7E24C0 /* FlightsFilter.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -370,8 +376,17 @@
 				810869810F132403220F0BDA /* SchipolService.swift */,
 				81086D942595838503674373 /* SchipolServiceSpec.swift */,
 				81086B91EBCF3C6BF32ED2C5 /* SchipolKeys.swift */,
+				81086417210C6DDDF8F468A6 /* SchipolQueryContext.swift */,
 			);
 			path = SchipolService;
+			sourceTree = "<group>";
+		};
+		81086F160C62DBAF29374164 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				81086FDFF79535647FA0B4DF /* SchipolQueryContextStub.swift */,
+			);
+			path = Stubs;
 			sourceTree = "<group>";
 		};
 		A12CCD121EB762D900BBD32E /* RxSwiftWorkshopTests */ = {
@@ -380,6 +395,7 @@
 				A12CCD151EB762D900BBD32E /* Info.plist */,
 				81086961E4C7AA6CDB357C2A /* Fakes */,
 				790007DC3C3C457B1CD0B480 /* Utilities */,
+				81086F160C62DBAF29374164 /* Stubs */,
 			);
 			path = RxSwiftWorkshopTests;
 			sourceTree = "<group>";
@@ -635,6 +651,8 @@
 				79000D49D13F3500608747E7 /* FlightVisualizationViewModel.swift in Sources */,
 				7900043FC44B5112CFB85CF1 /* Route.swift in Sources */,
 				790004F8689BB9A10FF9D187 /* FlowController.swift in Sources */,
+				810862E32D85F2C5DAF97220 /* FlightsFilter.swift in Sources */,
+				81086FB069D63FD2986274C1 /* SchipolQueryContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +676,7 @@
 				79000EE78747ACBE81271356 /* GentleUnwrapping.swift in Sources */,
 				79000AC0B90E0EF08F5D532F /* LazyFaking.swift in Sources */,
 				7900039827B790F1D721DD64 /* Equatability.swift in Sources */,
+				81086FC04A9B807AF61C0326 /* SchipolQueryContextStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

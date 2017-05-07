@@ -60,7 +60,7 @@ final class FlightsViewControllerSpec: QuickSpec {
                 }
 
                 it("should refresh items at view did appear") {
-                    flightsViewModel.verifyCall(withIdentifier: "refresh")
+                    flightsViewModel.verifyCall(withIdentifier: "refresh", arguments: [nil])
                 }
 
                 it("should have one flight in view model") {

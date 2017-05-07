@@ -16,4 +16,7 @@ final class FakeSchipolService: SchipolCallable {
 		return observable
 	}
 
+	func flights(with context: SchipolQueryContext?) -> Observable<[Flight]> {
+		return observable
+	}
 }

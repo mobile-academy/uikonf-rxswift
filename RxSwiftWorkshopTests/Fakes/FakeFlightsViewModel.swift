@@ -27,4 +27,16 @@ final class FakeFlightsViewModel: FlightsDisplayable, Mock {
         recordCall(withIdentifier: "refresh")
         return observable.subscribe()
     }
+
+    func refresh(with filter: FlightsFilter?) -> Disposable {
+        recordCall(withIdentifier: "refresh", arguments: [filter])
+        return observable.subscribe()
+    }
+}
+
+extension FlightsFilter: MockEquatable {
+    public func equalTo(other: MockEquatable?) -> Bool {
+        guard let filter = other as? FlightsFilter else { return false }
+        return self == filter
+    }
 }

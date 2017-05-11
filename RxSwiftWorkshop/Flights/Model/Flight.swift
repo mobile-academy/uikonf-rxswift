@@ -90,8 +90,8 @@ struct Flight: Unmarshaling, Equatable {
             schedule = Date()
         }
 
-        prefixIATA = try object.value(for: "prefixIATA")
-        serviceType = try object.value(for: "serviceType")
+        prefixIATA = (try? object.value(for: "prefixIATA")) ?? ""
+        serviceType = (try? object.value(for: "serviceType")) ?? ServiceType.passengerLine
         mainFlight = try object.value(for: "mainFlight")
         codeshares = (try? object.value(for: "codeshares.codeshares")) ?? []
 

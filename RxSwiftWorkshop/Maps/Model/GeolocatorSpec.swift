@@ -13,7 +13,6 @@ import CoreLocation
 import RxSwiftWorkshop
 
 class GeolocatorSpec: QuickSpec {
-
     override func spec() {
         describe("Geolocator") {
 
@@ -34,47 +33,103 @@ class GeolocatorSpec: QuickSpec {
                 sut = nil
             }
 
-            it("should pass geolocation request to its SystemGeolocator") {
-                guard case let (disposeBag?, systemGeolocator?) = unwrap(disposeBag, systemGeolocator) else { return }
+            context("always") {
                 let address = "Valencia Airport"
-                sut?.geolocate(address: address).subscribe().disposed(by: disposeBag)
-                systemGeolocator.verifyCall(
-                    withIdentifier: FakeSystemGeolocator.Identifiers.geocodeAddressString, arguments: [address]
-                )
+                setup {
+                    guard let (sut, disposeBag) = unwrap(sut, disposeBag) else { return }
+                    sut.geolocate(address: address).subscribe().disposed(by: disposeBag)
+                }
+                it("should pass geolocation request to its SystemGeolocator") {
+                    guard let systemGeolocator = unwrap(systemGeolocator) else { return }
+                    systemGeolocator.verifyCall(
+                        withIdentifier: FakeSystemGeolocator.Identifiers.geocodeAddressString, arguments: [address]
+                    )
+                }
             }
 
-            it("should return geolocation from its SystemGeolocator") {
-                guard case let (sut?, disposeBag?, systemGeolocator?) = unwrap(sut, disposeBag, systemGeolocator) else { return }
+            context("when SystemGeolocator succeeds in finding location") {
                 let location = CLLocation(latitude: 123.123, longitude: 132.132)
-                systemGeolocator.fixedLocation = location
                 var result: CLLocation?
-                sut.geolocate(address: "Valencia Airport").subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
-                expect(result?.coordinate).to(equal(location.coordinate))
+                setup {
+                    guard let (systemGeolocator, sut, disposeBag) = unwrap(systemGeolocator, sut, disposeBag) else { return }
+                    systemGeolocator.fixedLocation = location
+                    sut.geolocate(address: "Valencia Airport")
+                        .subscribe(onNext: { result = $0 })
+                        .disposed(by: disposeBag)
+                }
+                it("should return this location") {
+                    guard let result = unwrap(result) else { return }
+                    expect(result.coordinate).to(equal(location.coordinate))
+                }
             }
 
-            it("should return error from its SystemGeolocator") {
+            context("when SystemGeolocator fails in finding location") {
                 enum Error: Swift.Error { case someError }
-                guard case let (sut?, disposeBag?, systemGeolocator?) = unwrap(sut, disposeBag, systemGeolocator) else { return }
-                systemGeolocator.fixedError = Error.someError
                 var result: Error?
-                sut.geolocate(address: "Valencia Airport").subscribe(onError: { result = $0 as? Error }).disposed(by: disposeBag)
-                expect(result).to(equal(Error.someError))
+                setup {
+                    guard let (systemGeolocator, sut, disposeBag) = unwrap(systemGeolocator, sut, disposeBag) else { return }
+                    systemGeolocator.fixedError = Error.someError
+                    sut.geolocate(address: "Valencia Airport")
+                        .subscribe(onError: { result = $0 as? Error })
+                        .disposed(by: disposeBag)
+                }
+                it("should return the SystemGeolocator error") {
+                    guard let result = unwrap(result) else { return }
+                    expect(result).to(equal(Error.someError))
+                }
             }
 
-            it("should return proper error from its SystemGeolocator when it acts broken") {
-                guard case let (sut?, disposeBag?) = unwrap(sut, disposeBag) else { return }
+            context("when SystemGeolocator fails in returning anything at all") {
                 var result: Geolocator.Error?
-                sut.geolocate(address: "Valencia Airport").subscribe(onError: { result = $0 as? Geolocator.Error }).disposed(by: disposeBag)
-                expect(result).to(equal(Geolocator.Error.geolocationFailedForUnknownReason))
+                setup {
+                    guard let (sut, disposeBag) = unwrap(sut, disposeBag) else { return }
+                    sut.geolocate(address: "Valencia Airport")
+                        .subscribe(onError: { result = $0 as? Geolocator.Error })
+                        .disposed(by: disposeBag)
+                }
+                it("should return the dedicated Geolocator error") {
+                    guard let result = unwrap(result) else { return }
+                    expect(result).to(equal(Geolocator.Error.geolocationFailedForUnknownReason))
+                }
             }
 
-            it("should cancel geocoding on subscription disposing") {
-                guard case let (sut?, systemGeolocator?) = unwrap(sut, systemGeolocator) else { return }
-                systemGeolocator.shouldReturnAtAll = false
-                let disposable = sut.geolocate(address: "Valencia Airport").subscribe()
-                expect(systemGeolocator.isGeocoding).to(beTrue())
-                disposable.dispose()
-                expect(systemGeolocator.isGeocoding).to(beFalse())
+            context("along geolocating process") {
+                setup {
+                    guard let systemGeolocator = unwrap(systemGeolocator) else { return }
+                    systemGeolocator.shouldReturnAtAll = false
+                }
+                context("before the geolocation is started") {
+                    it("should have its SystemGeolocator reports it's not geolocating") {
+                        guard let systemGeolocator = unwrap(systemGeolocator) else { return }
+                        expect(systemGeolocator.isGeocoding).to(beFalse())
+                    }
+                }
+
+                context("after the geolocation is started") {
+                    var disposable: Disposable?
+                    setup {
+                        guard let sut = unwrap(sut) else { return }
+                        disposable = sut.geolocate(address: "Valencia Airport").subscribe()
+                    }
+
+                    context("during geolocating process") {
+                        it("should have its SystemGeolocator reports it is geolocating") {
+                            guard let systemGeolocator = unwrap(systemGeolocator) else { return }
+                            expect(systemGeolocator.isGeocoding).to(beTrue())
+                        }
+                    }
+
+                    context("after unsubscribing from geolocation") {
+                        setup {
+                            guard let disposable = unwrap(disposable) else { return }
+                            disposable.dispose()
+                        }
+                        it("should have its SystemGeolocator reports it is geolocating") {
+                            guard let systemGeolocator = unwrap(systemGeolocator) else { return }
+                            expect(systemGeolocator.isGeocoding).to(beFalse())
+                        }
+                    }
+                }
             }
         }
     }

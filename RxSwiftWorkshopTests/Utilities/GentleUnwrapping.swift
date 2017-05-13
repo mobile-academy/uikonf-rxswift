@@ -11,22 +11,27 @@ func unwrap<A>(_ a: A?, file: FileString = #file, line: UInt = #line) -> A? {
     return a
 }
 
-func unwrap<A, B>(_ a: A?, _ b: B?, file: FileString = #file, line: UInt = #line) -> (A?, B?) {
-    return (unwrap(a), unwrap(b))
+func unwrap<A, B>(_ a: A?, _ b: B?, file: FileString = #file, line: UInt = #line) -> (A, B)? {
+    guard let a = unwrap(a), let b = unwrap(b) else { return nil }
+    return (a, b)
 }
 
-func unwrap<A, B, C>(_ a: A?, _ b: B?, _ c: C?, file: FileString = #file, line: UInt = #line) -> (A?, B?, C?) {
-    return (unwrap(a), unwrap(b), unwrap(c))
+func unwrap<A, B, C>(_ a: A?, _ b: B?, _ c: C?, file: FileString = #file, line: UInt = #line) -> (A, B, C)? {
+    guard let (a, b) = unwrap(a, b), let c = unwrap(c) else { return nil }
+    return (a, b, c)
 }
 
-func unwrap<A, B, C, D>(_ a: A?, _ b: B?, _ c: C?, _ d: D?, file: FileString = #file, line: UInt = #line) -> (A?, B?, C?, D?) {
-    return (unwrap(a), unwrap(b), unwrap(c), unwrap(d))
+func unwrap<A, B, C, D>(_ a: A?, _ b: B?, _ c: C?, _ d: D?, file: FileString = #file, line: UInt = #line) -> (A, B, C, D)? {
+    guard let (a, b, c) = unwrap(a, b, c), let d = unwrap(d) else { return nil }
+    return (a, b, c, d)
 }
 
-func unwrap<A, B, C, D, E>(_ a: A?, _ b: B?, _ c: C?, _ d: D?, _ e: E?, file: FileString = #file, line: UInt = #line) -> (A?, B?, C?, D?, E?) {
-    return (unwrap(a), unwrap(b), unwrap(c), unwrap(d), unwrap(e))
+func unwrap<A, B, C, D, E>(_ a: A?, _ b: B?, _ c: C?, _ d: D?, _ e: E?, file: FileString = #file, line: UInt = #line) -> (A, B, C, D, E)? {
+    guard let (a, b, c, d) = unwrap(a, b, c, d), let e = unwrap(e) else { return nil }
+    return (a, b, c, d, e)
 }
 
-func unwrap<A, B, C, D, E, F>(_ a: A?, _ b: B?, _ c: C?, _ d: D?, _ e: E?, _ f: F?, file: FileString = #file, line: UInt = #line) -> (A?, B?, C?, D?, E?, F?) {
-    return (unwrap(a), unwrap(b), unwrap(c), unwrap(d), unwrap(e), unwrap(f))
+func unwrap<A, B, C, D, E, F>(_ a: A?, _ b: B?, _ c: C?, _ d: D?, _ e: E?, _ f: F?, file: FileString = #file, line: UInt = #line) -> (A, B, C, D, E, F)? {
+    guard let (a, b, c, d, e) = unwrap(a, b, c, d, e), let f = unwrap(f) else { return nil }
+    return (a, b, c, d, e, f)
 }

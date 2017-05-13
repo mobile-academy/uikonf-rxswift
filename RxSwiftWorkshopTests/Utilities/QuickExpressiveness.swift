@@ -8,10 +8,3 @@ import Quick
 
 let setup: (@escaping BeforeExampleClosure) -> () = beforeEach
 
-func condition(_ description: String, flags: FilterFlags = [:], closure: () -> Void) {
-    return context(description, flags: flags, closure: closure)
-}
-
-func describes(_ description: String, flags: FilterFlags = [:], closure: () -> Void) {
-    return describe(description, flags: flags, closure: closure)
-}

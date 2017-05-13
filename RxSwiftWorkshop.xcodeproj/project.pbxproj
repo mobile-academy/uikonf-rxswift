@@ -28,12 +28,16 @@
 		797BA4D6019618771E9F1896 /* Pods_Workshops_RxSwiftWorkshopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F6181449532051D618E099 /* Pods_Workshops_RxSwiftWorkshopTests.framework */; };
 		8108601AF59ED8EA7EE407F8 /* FakeIATAKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086A9C451D010A64B689E3 /* FakeIATAKeys.swift */; };
 		8108603B301829C5B1DE8FE3 /* FlightsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810862A374CA8980AC5FA5AC /* FlightsViewControllerSpec.swift */; };
+		810860850202F9ED61EBFDE7 /* FakeFlightFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810860398185904D92F7EC99 /* FakeFlightFilterView.swift */; };
 		8108610F6FE2FD5FD91B281F /* FlightStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086A0C2C6A868E67176AFD /* FlightStatus.swift */; };
 		810861CAB860DCB18B42068C /* FlightSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086364429E48A3BCD726A0 /* FlightSectionModel.swift */; };
 		810862E32D85F2C5DAF97220 /* FlightsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086960CD53A2B17A7E24C0 /* FlightsFilter.swift */; };
+		81086306E77EA7EE057F41A7 /* FlightsFilterViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810866FE12055D2A20A03F54 /* FlightsFilterViewControllerSpec.swift */; };
 		8108636334A40F95E01181C5 /* SchipolKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086B91EBCF3C6BF32ED2C5 /* SchipolKeys.swift */; };
 		810863652010F26450CB6EAD /* FakeSchipolKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810865FB57CDCF4E24098AE8 /* FakeSchipolKeys.swift */; };
+		810864ACE12C651FF280F72F /* FlightsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086C78C6FBC65342EC71B8 /* FlightsFilterViewController.swift */; };
 		8108653F018E18720710D044 /* JSONAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810864E618DDCD1B5EE835C1 /* JSONAPIClient.swift */; };
+		81086604B89B03AFDFC47B86 /* FlightsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108648053B8C87306D75668 /* FlightsFilterView.swift */; };
 		81086764A01D1350119986BC /* FlightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810868EA7811273AB0733B1D /* FlightCell.swift */; };
 		8108685125EDCA58FE0193FF /* FakeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810862D65A9C80AE347A1D2E /* FakeAPIClient.swift */; };
 		810868DA97F0ACA285683A14 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086BA8E82194460087B88F /* Flight.swift */; };
@@ -41,10 +45,12 @@
 		8108693B19D6762373F47939 /* IATAServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810868BA5E1D2AECEF882D81 /* IATAServiceSpec.swift */; };
 		81086969F7E67D6C69781DBC /* IATAService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086A0A9C3339F5ED32DBBE /* IATAService.swift */; };
 		8108699E1216682829B01DE7 /* Airline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810864EC274D3124BAC8B87A /* Airline.swift */; };
+		81086B4CB16BDB0F76EBD91E /* TitleValueInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086A9110DC2CFA6273BD44 /* TitleValueInputView.swift */; };
 		81086BFB1F0E0F5BF782EF12 /* SchipolServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086D942595838503674373 /* SchipolServiceSpec.swift */; };
 		81086C11256908C9F43B298D /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810863D73FF8377628BEF97B /* ServiceType.swift */; };
 		81086C2902591ED4DE8A3E1D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108673F8E9FB008AA86C7ED /* APIClient.swift */; };
 		81086C2A9A758FE606ED912F /* FakeFlightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8108654D09ABEB14B17FD03C /* FakeFlightsViewModel.swift */; };
+		81086C4590649914F9623356 /* DateInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086FCE1971892E9A0783FC /* DateInputView.swift */; };
 		81086C92513EAA85070B7072 /* URLRequestBuilderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086F5AADB18E04687CC2DE /* URLRequestBuilderSpec.swift */; };
 		81086CEDC2D7F09401AADE4D /* FlightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086C88BF568A2A66DF5D46 /* FlightsViewModel.swift */; };
 		81086CF864E686841A9EB124 /* SchipolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810869810F132403220F0BDA /* SchipolService.swift */; };
@@ -93,6 +99,7 @@
 		79000D137AE92FC2BBAA3C62 /* LazyFaking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyFaking.swift; sourceTree = "<group>"; };
 		79000E1511EB1430092FC38D /* GentleUnwrapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GentleUnwrapping.swift; sourceTree = "<group>"; };
 		79000E5B44024AB0E4C1B6D2 /* GeolocatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeolocatorSpec.swift; sourceTree = "<group>"; };
+		810860398185904D92F7EC99 /* FakeFlightFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeFlightFilterView.swift; sourceTree = "<group>"; };
 		8108613B491818888084903B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		810862A374CA8980AC5FA5AC /* FlightsViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsViewControllerSpec.swift; sourceTree = "<group>"; };
 		810862D65A9C80AE347A1D2E /* FakeAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAPIClient.swift; sourceTree = "<group>"; };
@@ -101,12 +108,14 @@
 		810863D73FF8377628BEF97B /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		81086417210C6DDDF8F468A6 /* SchipolQueryContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchipolQueryContext.swift; sourceTree = "<group>"; };
 		8108643841D67375A03916C5 /* FlightsViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsViewModelSpec.swift; sourceTree = "<group>"; };
+		8108648053B8C87306D75668 /* FlightsFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsFilterView.swift; sourceTree = "<group>"; };
 		810864E618DDCD1B5EE835C1 /* JSONAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAPIClient.swift; sourceTree = "<group>"; };
 		810864EC274D3124BAC8B87A /* Airline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airline.swift; sourceTree = "<group>"; };
 		8108654D09ABEB14B17FD03C /* FakeFlightsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeFlightsViewModel.swift; sourceTree = "<group>"; };
 		810865C534A4B23E74F980D8 /* FakeIATAService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeIATAService.swift; sourceTree = "<group>"; };
 		810865CC83803757226FAAB4 /* FakeSchipolService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSchipolService.swift; sourceTree = "<group>"; };
 		810865FB57CDCF4E24098AE8 /* FakeSchipolKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSchipolKeys.swift; sourceTree = "<group>"; };
+		810866FE12055D2A20A03F54 /* FlightsFilterViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsFilterViewControllerSpec.swift; sourceTree = "<group>"; };
 		8108673F8E9FB008AA86C7ED /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		810868BA5E1D2AECEF882D81 /* IATAServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IATAServiceSpec.swift; sourceTree = "<group>"; };
 		810868EA7811273AB0733B1D /* FlightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightCell.swift; sourceTree = "<group>"; };
@@ -114,16 +123,19 @@
 		810869810F132403220F0BDA /* SchipolService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchipolService.swift; sourceTree = "<group>"; };
 		81086A0A9C3339F5ED32DBBE /* IATAService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IATAService.swift; sourceTree = "<group>"; };
 		81086A0C2C6A868E67176AFD /* FlightStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightStatus.swift; sourceTree = "<group>"; };
+		81086A9110DC2CFA6273BD44 /* TitleValueInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleValueInputView.swift; sourceTree = "<group>"; };
 		81086A9C451D010A64B689E3 /* FakeIATAKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeIATAKeys.swift; sourceTree = "<group>"; };
 		81086AF0CD88320B6F0866A3 /* IATAKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IATAKeys.swift; sourceTree = "<group>"; };
 		81086B91EBCF3C6BF32ED2C5 /* SchipolKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchipolKeys.swift; sourceTree = "<group>"; };
 		81086BA8E82194460087B88F /* Flight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		81086BF26C15B7517496E17B /* URLRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		81086C731E7B9AB9A3A34DA7 /* Airport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
+		81086C78C6FBC65342EC71B8 /* FlightsFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsFilterViewController.swift; sourceTree = "<group>"; };
 		81086C88BF568A2A66DF5D46 /* FlightsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsViewModel.swift; sourceTree = "<group>"; };
 		81086D628648AC448F120695 /* FlightsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsViewController.swift; sourceTree = "<group>"; };
 		81086D942595838503674373 /* SchipolServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchipolServiceSpec.swift; sourceTree = "<group>"; };
 		81086F5AADB18E04687CC2DE /* URLRequestBuilderSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestBuilderSpec.swift; sourceTree = "<group>"; };
+		81086FCE1971892E9A0783FC /* DateInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateInputView.swift; sourceTree = "<group>"; };
 		81086FDFF79535647FA0B4DF /* SchipolQueryContextStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchipolQueryContextStub.swift; sourceTree = "<group>"; };
 		88F6181449532051D618E099 /* Pods_Workshops_RxSwiftWorkshopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workshops_RxSwiftWorkshopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE08F0CDC246F296483FCB /* Pods-Workshops-RxSwiftWorkshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workshops-RxSwiftWorkshop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Workshops-RxSwiftWorkshop/Pods-Workshops-RxSwiftWorkshop.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +212,7 @@
 				810867A027732D668900A835 /* Flights */,
 				81086D0F7CEC28C860045480 /* Shared */,
 				79000CB854946F6F8A5ADF37 /* Maps */,
+				810861D7A4282E5D38C0D614 /* FlightsFilter */,
 			);
 			path = RxSwiftWorkshop;
 			sourceTree = "<group>";
@@ -274,6 +287,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		810861D7A4282E5D38C0D614 /* FlightsFilter */ = {
+			isa = PBXGroup;
+			children = (
+				8108623D1542E9D069683868 /* View */,
+			);
+			path = FlightsFilter;
+			sourceTree = "<group>";
+		};
 		81086237A0BF16BDA6A13922 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +302,18 @@
 				81086364429E48A3BCD726A0 /* FlightSectionModel.swift */,
 				810868EA7811273AB0733B1D /* FlightCell.swift */,
 				810862A374CA8980AC5FA5AC /* FlightsViewControllerSpec.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8108623D1542E9D069683868 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				81086C78C6FBC65342EC71B8 /* FlightsFilterViewController.swift */,
+				8108648053B8C87306D75668 /* FlightsFilterView.swift */,
+				810866FE12055D2A20A03F54 /* FlightsFilterViewControllerSpec.swift */,
+				81086A9110DC2CFA6273BD44 /* TitleValueInputView.swift */,
+				81086FCE1971892E9A0783FC /* DateInputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -322,6 +355,7 @@
 				810865C534A4B23E74F980D8 /* FakeIATAService.swift */,
 				8108654D09ABEB14B17FD03C /* FakeFlightsViewModel.swift */,
 				79000095B20383E503946982 /* FakeSystemGeolocator.swift */,
+				810860398185904D92F7EC99 /* FakeFlightFilterView.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -653,6 +687,10 @@
 				790004F8689BB9A10FF9D187 /* FlowController.swift in Sources */,
 				810862E32D85F2C5DAF97220 /* FlightsFilter.swift in Sources */,
 				81086FB069D63FD2986274C1 /* SchipolQueryContext.swift in Sources */,
+				810864ACE12C651FF280F72F /* FlightsFilterViewController.swift in Sources */,
+				81086604B89B03AFDFC47B86 /* FlightsFilterView.swift in Sources */,
+				81086B4CB16BDB0F76EBD91E /* TitleValueInputView.swift in Sources */,
+				81086C4590649914F9623356 /* DateInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +715,8 @@
 				79000AC0B90E0EF08F5D532F /* LazyFaking.swift in Sources */,
 				7900039827B790F1D721DD64 /* Equatability.swift in Sources */,
 				81086FC04A9B807AF61C0326 /* SchipolQueryContextStub.swift in Sources */,
+				81086306E77EA7EE057F41A7 /* FlightsFilterViewControllerSpec.swift in Sources */,
+				810860850202F9ED61EBFDE7 /* FakeFlightFilterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

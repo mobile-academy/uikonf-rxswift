@@ -5,6 +5,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 final class FlowController {
 
@@ -17,7 +18,11 @@ final class FlowController {
         let schipolService = SchipolService(client: jsonClient)
         let iataService = IATAService(client: jsonClient)
         let flightViewModel = FlightsViewModel(schipolCallable: schipolService, iataCallable: iataService)
-        let flightsViewController = FlightsViewController(viewModel: flightViewModel, showDetailsViewController: showMapViewController)
+        let flightsViewController = FlightsViewController(
+            viewModel: flightViewModel,
+            showDetailsViewController: showMapViewController,
+            showFilterViewController: showFlightsFilterViewController
+        )
         return UINavigationController(rootViewController: flightsViewController)
     }
 
@@ -27,5 +32,13 @@ final class FlowController {
         let delegate = MapViewDelegate()
         let mapViewController = MapViewController(viewModel: flightVisualisationViewModel, delegate: delegate)
         fromViewController.navigationController?.pushViewController(mapViewController, animated: true)
+    }
+
+    func showFlightsFilterViewController(parent: UIViewController, filterChange: @escaping FilterChangeCallback) {
+        let flightsFilterViewController = FlightsFilterViewController(filterChange: filterChange, dismissViewController: {
+            parent.dismiss(animated: true)
+        })
+        let navigationController = UINavigationController(rootViewController: flightsFilterViewController)
+        parent.present(navigationController, animated: true)
     }
 }

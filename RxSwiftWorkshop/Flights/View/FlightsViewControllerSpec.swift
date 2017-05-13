@@ -27,7 +27,7 @@ final class FlightsViewControllerSpec: QuickSpec {
                 observable = scheduler.createColdObservable([next(0, [self.sampleFlight()]), completed(0)])
 
                 flightsViewModel = FakeFlightsViewModel(observable: observable.asObservable())
-                sut = FlightsViewController(viewModel: flightsViewModel, showDetailsViewController: { _, _ in })
+                sut = FlightsViewController(viewModel: flightsViewModel, showDetailsViewController: { _, _ in }, showFilterViewController: { _ in })
             }
 
             afterEach {
@@ -41,6 +41,23 @@ final class FlightsViewControllerSpec: QuickSpec {
 
             it("should have table view as main view") {
                 expect(sut.view).to(beAKindOf(UITableView.self))
+            }
+
+            describe("left bar button item") {
+                var leftBarButtonItem: UIBarButtonItem!
+
+                beforeEach {
+                    _ = sut.view
+                    leftBarButtonItem = sut.navigationItem.leftBarButtonItem
+                }
+
+                it("should not be nil") {
+                    expect(leftBarButtonItem).notTo(beNil())
+                }
+
+                it("should have proper title") {
+                    expect(leftBarButtonItem.title).to(equal("Filter"))
+                }
             }
 
             context("table view") {

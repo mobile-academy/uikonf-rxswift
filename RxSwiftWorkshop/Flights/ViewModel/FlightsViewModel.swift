@@ -31,10 +31,6 @@ final class FlightsViewModel: FlightsDisplayable {
         flights = Variable([])
     }
 
-    func refresh() -> Disposable {
-        return refresh(with: nil)
-    }
-
     func refresh(with filter: FlightsFilter?) -> Disposable {
         let flightsCall = schipolCallable
             .flights(with: filter)

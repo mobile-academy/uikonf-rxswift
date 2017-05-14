@@ -5,10 +5,10 @@ import RxSwift
 
 //: # Memory Management - Part Two
 //:
-//: In previous example we learned that certain sequence observers are automatically disposed when a sequence completes.
+//: In previous example we learned that all sequence observers are automatically disposed when a sequence completes or receives an error.
 //:
 //: You probably wonder - what if I have a sequence that never completes? Or a sequence that won't complete before my object should be deallocated?
-//: In this case we need to manually dispose of the sequence observer. There are two ways of doing this.
+//: In this case we need to take care how the sequence observer is disposed. There are two ways of doing this.
 //:
 
 // Let's assume that this sequence will never finish.
@@ -23,7 +23,7 @@ disposable.dispose()
 
 // This will deallocate subscribed callbacks, thus releasing any resources captured by them.
 
-// Another way of disposing, one that is much more elegant, is using a `DisposeBag`.
+// Another way of disposing, one that is much more elegant, is using a `DisposeBag`. You usually use `DisposeBag`s to bind a sequence observer to lifecycle of an object within which the subscription takes place.
 var exampleDisposeBag = DisposeBag()
 
 // You can add a disposable to dispose bag by calling

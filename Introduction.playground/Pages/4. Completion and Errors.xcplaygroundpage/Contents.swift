@@ -6,7 +6,7 @@ import RxSwift
 //:
 //: # Completion and Errors
 //:
-//: As you already know in Rx Sequences take from both Iterator and Observer patterns. Let's take a look at another aspect of Iterator Type that got incorportated into Rx.
+//: As you already know in Rx Sequences take from both Iterator and Observer patterns. Let's take a look at another aspect of Iterator Type that got incorporated into Rx.
 //:
 //: In Rx a sequence can emit a `onCompleted` event. This means that the sequence has completed and no further elements will be received. In our case of simple observables created from arrays of values `onCompleted` events are sent after all values in given sequence have been passed:
 

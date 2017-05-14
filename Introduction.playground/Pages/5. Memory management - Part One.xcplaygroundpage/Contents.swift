@@ -24,7 +24,7 @@ animals.subscribe(
 )
 
 //:
-//: Note that our subscriber has been automatically diposed after it received all events and we did not have to do any additional setup. This happened because our sequence has a finite amount of values - it runs through all animals and completes immediately afterwards. Since it completed and there are no new values expected (this is a strong assumption of Rx - you can't receive more events after `onCompleted` or `onError`) there is no point in keeping it in memory and this it gets automatically disposed of.
+//: Note that our subscriber has been automatically disposed after it received all events and we did not have to do any additional setup. This happened because our sequence has a finite amount of values - it runs through all animals and completes immediately afterwards. Since it completed and there are no new values expected (this is a strong assumption of Rx - you can't receive more events after `onCompleted` or `onError`) there is no point in keeping it in memory and this it gets automatically disposed of.
 //:
 
 //: [Memory Management - Part Two](@next)

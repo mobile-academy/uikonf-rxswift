@@ -35,7 +35,7 @@ exampleDisposeBag = DisposeBag()
 //:
 //: ## Assignment
 //: 
-//: Your task is to dispose of a registered observer using a dispose bag. In this scenario we'll use a sequence that does not complete immedtiately - a `Variable`. `Variable` stores a value within and sends an event each time you update that value by calling `variable.value = x`.
+//: Your task is to dispose of a registered observer using a dispose bag. In this scenario we'll use a sequence that does not complete immediately - a `Variable`. `Variable` stores a value within and sends an event each time you update that value by calling `variable.value = x`.
 //:
 
 var disposeBag = DisposeBag()

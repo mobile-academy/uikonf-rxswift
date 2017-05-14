@@ -5,7 +5,7 @@ import RxSwift
 
 //: # Transforming sequences
 //:
-//: In this part we'll learn how to transform sequences. The most basic transform operator that's defined in RxSwift is `map`, which you probably already know from `Swfit.Sequence`.
+//: In this part we'll learn how to transform sequences. The most basic transform operator that's defined in RxSwift is `map`, which you probably already know from `Swift.Sequence`.
 
 // Swift Map
 
@@ -26,7 +26,7 @@ observable
 //:
 //: # Assignment
 //:
-//: Your task is to take the sequence of people that's defined below and map it so that we recevie a sequence of `String`. You should print that string afterwards. You'll need to use map operator that you can see in the example above.
+//: Your task is to take the sequence of people that's defined below and map it so that we receive a sequence of `String`. You should print that string afterwards. You'll need to use map operator that you can see in the example above.
 
 let people = FixturePeople.make()
 

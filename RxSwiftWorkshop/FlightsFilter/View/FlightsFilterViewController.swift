@@ -56,7 +56,13 @@ final class FlightsFilterViewController: UIViewController {
         // HINT 3: Use `merge` operator
         // HINT 4: Remember about disposing
 
-        // Write here...
+        Observable.merge(
+            closeBarButtonItem.rx.tap.asObservable(),
+            applyBarButtonItem.rx.tap.asObservable(),
+            resetBarButtonItem.rx.tap.asObservable()
+        )
+        .subscribe(onNext: dismissViewController)
+        .disposed(by: disposeBag)
     }
 
     private func configureFiltering() {
@@ -66,11 +72,21 @@ final class FlightsFilterViewController: UIViewController {
         // HINT 1: Use `combineLatest` operator
         // HINT 2: Use `sample` operator
 
-        // Write here ...
+        Observable.combineLatest(
+            flightsFilterView.fromDateStringObservable,
+            flightsFilterView.toDateStringObservable,
+            resultSelector: { from, to in FlightsFilter(fromDate: from, toDate: to) }
+        )
+        .sample(applyBarButtonItem.rx.tap.asObservable())
+        .subscribe(onNext: filterChange)
+        .disposed(by: disposeBag)
 
         // TODO: 4: Write logic that changes filter to `nil`, i.e. puts `nil` to `filterChanges` as parameter
         // when reset bar button item is tapped
 
-        // Write here...
+        resetBarButtonItem.rx.tap
+            .map { _ in nil }
+            .subscribe(onNext: filterChange)
+            .disposed(by: disposeBag)
     }
 }

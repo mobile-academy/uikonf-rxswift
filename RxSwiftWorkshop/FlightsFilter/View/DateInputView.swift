@@ -38,8 +38,15 @@ final class DateInputView: UIView {
         // HINT 3: Remember about `asObservable()` operator on `ControlProperty` to treat it as Observable
         // HINT 4: Use `combineLatest` operator
 
-        // Write here, replace `.empty()`
-        return .empty()
+        return Observable.combineLatest(
+            yearInputView.inputField.rx.text.orEmpty.asObservable(),
+            monthInputView.inputField.rx.text.orEmpty.asObservable(),
+            dayInputView.inputField.rx.text.orEmpty.asObservable(),
+            resultSelector: {
+                year, month, day in
+                guard !year.isEmpty, !month.isEmpty, !day.isEmpty else { return nil }
+                return "\(year)-\(month)-\(day)"
+        })
     }
 
     init(title: String) {

@@ -15,12 +15,13 @@ import RxSwift
 let animals = Observable.from(["🐶", "🐱", "🐭", "🐹"])
 
 //: 
-//: In RxSwift you can register additional callback that will be called when your signal is disposed of. You can think about disposing as releasing all relevant resources of given registered observer.
+//: In RxSwift you can register additional callback that will be called when your subscribed callbacks are disposed of. You can think about disposing as releasing all relevant resources of given registered observer.
 //: 
 
-animals.subscribe(
-    onNext: { print($0) },
-    onDisposed: { print("Observer disposed") }
+animals
+    .subscribe(
+        onNext: { print($0) },
+        onDisposed: { print("Observer disposed") }
 )
 
 //:

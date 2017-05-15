@@ -27,7 +27,7 @@ observable
 //:
 //: # Assignment
 //:
-//: Your task is to take the sequence of people that's defined below filter out people who are younger than 40. That `Person` structure afterwards. You'll need to use filter operator that you can see in the example above.
+//: Your task is to take the sequence of people that's defined below filter out people who are younger than 40. Print that `Person` structure afterwards. You'll need to use filter operator that you can see in the example above.
 
 let people = FixturePeople.make()
 

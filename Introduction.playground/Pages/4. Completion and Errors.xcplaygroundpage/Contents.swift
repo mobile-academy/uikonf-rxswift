@@ -1,8 +1,6 @@
 //: [Previous](@previous)
-
 import Foundation
 import RxSwift
-
 //:
 //: # Completion and Errors
 //:

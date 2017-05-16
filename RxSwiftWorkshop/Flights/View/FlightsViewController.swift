@@ -6,12 +6,14 @@
 import Foundation
 import UIKit
 import RxSwift
+import RxCocoa
 import RxDataSources
 
 final class FlightsViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let formatter = FlightFormatter()
 
+    //    private lazy var searchController = UISearchController(searchResultsController: nil)
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.allowsSelection = true
@@ -46,6 +48,10 @@ final class FlightsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(FlightCell.self, forCellReuseIdentifier: String(describing: FlightCell.self))
+
+        //        searchController.dimsBackgroundDuringPresentation = false
+        //        definesPresentationContext = true
+        //        tableView.tableHeaderView = searchController.searchBar
 
         let dataSource = createDataSource()
         viewModel

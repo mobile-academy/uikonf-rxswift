@@ -57,4 +57,13 @@ final class FlightsViewModel: FlightsDisplayable {
             .flatMap { code in self.iataCallable.airport(for: code) }
             .toArray()
     }
+
+    //    private func isFlight(_ flight: Flight, matching query: String) -> Bool {
+    //        guard !query.isEmpty else { return true }
+    //        let lowerQuery = query.lowercased()
+    //        let isNameMatchingQuery = flight.name.lowercased().contains(lowerQuery)
+    //        let isAnyStatusMatchingQuery = !flight.statuses.filter { status in status.description.lowercased().contains(lowerQuery) }.isEmpty
+    //        let isAnyDestinationMatchingQuery: Bool = !(flight.destinations ?? []).filter { airport in airport.name.lowercased().contains(lowerQuery) }.isEmpty
+    //        return isNameMatchingQuery || isAnyStatusMatchingQuery || isAnyDestinationMatchingQuery
+    //    }
 }

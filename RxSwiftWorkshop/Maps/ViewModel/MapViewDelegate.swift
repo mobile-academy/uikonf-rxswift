@@ -12,18 +12,29 @@ protocol UserLocationProviding {
     var userLocation: Observable<MapViewDelegate.UserLocation> { get }
 }
 
+protocol LocationStatusRequesting {
+    var delegate: CLLocationManagerDelegate? { get set }
+    func requestWhenInUseAuthorization()
+}
+
+extension CLLocationManager: LocationStatusRequesting {}
+
 final class MapViewDelegate: NSObject, UserLocationProviding, MKMapViewDelegate, CLLocationManagerDelegate {
 
-    private let locationManager: CLLocationManager
+    private var locationManager: LocationStatusRequesting
+    private let authorizationStatusCheck: () -> CLAuthorizationStatus
 
-    override init() {
-        locationManager = CLLocationManager()
+    init(locationManager: LocationStatusRequesting, authorizationStatusCheck: @escaping () -> CLAuthorizationStatus = CLLocationManager.authorizationStatus) {
+        self.locationManager = locationManager
+        self.authorizationStatusCheck = authorizationStatusCheck
         super.init()
-        locationManager.delegate = self
+        self.locationManager.delegate = self
     }
 
     func mapView(_: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyline = overlay as? MKPolyline else { return MKOverlayRenderer(overlay: overlay) }
+        guard let polyline = overlay as? MKPolyline else {
+            return MKOverlayRenderer(overlay: overlay)
+        }
         let polylineRenderer = MKPolylineRenderer(overlay: polyline)
         polylineRenderer.strokeColor = .blue
         polylineRenderer.lineWidth = 5

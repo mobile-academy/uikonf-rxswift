@@ -16,9 +16,9 @@ protocol AlternativeRouteVisualisation {
 final class AlternativeRouteVisualisationViewModel: AlternativeRouteVisualisation {
 
     private let disposeBag = DisposeBag()
-    private let directionsService: DirectionsService
+    private let directionsService: DirectionsCallable
 
-    init(directionsService: DirectionsService) {
+    init(directionsService: DirectionsCallable) {
         self.directionsService = directionsService
     }
 

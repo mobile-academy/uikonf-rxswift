@@ -5,6 +5,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 final class FlowController {
 
@@ -26,7 +27,8 @@ final class FlowController {
         let flightVisualisationViewModel = FlightVisualisationViewModel(flight: flight, geolocator: geolocator)
         let directionsService = DirectionsService()
         let routeVisualisationViewModel = AlternativeRouteVisualisationViewModel(directionsService: directionsService)
-        let delegate = MapViewDelegate()
+        let locationManager = CLLocationManager()
+        let delegate = MapViewDelegate(locationManager: locationManager)
         let mapViewController = MapViewController(
             flightsViewModel: flightVisualisationViewModel,
             routeViewModel: routeVisualisationViewModel,

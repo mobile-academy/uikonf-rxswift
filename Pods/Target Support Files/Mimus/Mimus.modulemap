@@ -1,0 +1,6 @@
+framework module Mimus {
+  umbrella header "Mimus-umbrella.h"
+
+  export *
+  module * { export * }
+}

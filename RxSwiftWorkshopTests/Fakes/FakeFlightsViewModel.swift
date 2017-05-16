@@ -23,6 +23,14 @@ final class FakeFlightsViewModel: FlightsDisplayable, Mock {
         observable.bind(to: flights).disposed(by: disposeBag)
     }
 
+    func flights(filteredBy queryObservable: Observable<String>) -> Observable<[Flight]> {
+        return Observable.combineLatest(queryObservable, flights.asObservable()) {
+            query, flights in
+            self.recordCall(withIdentifier: "flightsFilteredBy", arguments: [query])
+            return flights
+        }
+    }
+
     func refresh() -> Disposable {
         recordCall(withIdentifier: "refresh")
         return observable.subscribe()

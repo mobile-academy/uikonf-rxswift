@@ -6,6 +6,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import RxCocoa
 import RxDataSources
 
 final class FlightsViewController: UIViewController {
@@ -17,6 +18,8 @@ final class FlightsViewController: UIViewController {
         tableView.allowsSelection = true
         return tableView
     }()
+
+    private lazy var searchController = UISearchController(searchResultsController: nil)
 
     let viewModel: FlightsDisplayable
     private let showDetailsViewController: (Flight, UIViewController) -> Void
@@ -40,9 +43,31 @@ final class FlightsViewController: UIViewController {
         super.viewDidLoad()
         tableView.register(FlightCell.self, forCellReuseIdentifier: String(describing: FlightCell.self))
 
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+
+        setUpTableViewData()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.refresh().disposed(by: disposeBag)
+    }
+
+    private func setUpTableViewData() {
+        let filterQueryObservable = searchController.searchBar.rx.text.orEmpty
+            .throttle(0.5, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+
+        let dismissQueryObservable = searchController.rx.didDismiss
+            .map { _ in "" }
+
+        let queryObservable = Observable.merge(filterQueryObservable, dismissQueryObservable)
+
         let dataSource = createDataSource()
         viewModel
-            .flights.asObservable()
+            .flights(filteredBy: queryObservable)
             .map { flights -> [FlightSectionModel] in [FlightSectionModel(items: flights)] }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -55,11 +80,6 @@ final class FlightsViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewModel.refresh().disposed(by: disposeBag)
     }
 
     private func createDataSource() -> RxTableViewSectionedAnimatedDataSource<FlightSectionModel> {

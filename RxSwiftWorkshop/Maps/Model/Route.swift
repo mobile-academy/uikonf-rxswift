@@ -8,6 +8,5 @@ import CoreLocation
 
 struct Route {
     let start: CLLocation
-    let position: CLLocation
     let end: CLLocation
 }

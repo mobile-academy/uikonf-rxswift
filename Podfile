@@ -8,7 +8,8 @@ abstract_target 'Workshops' do
     pod 'RxSwift', '~> 3.0'
     pod 'RxCocoa', '~> 3.0'
     pod 'Marshal', '~> 1.0'
-    pod 'SwiftDate',     '~> 4.0'
+    pod 'SwiftDate', '~> 4.0'
+    pod 'Result', '~> 3.2.1'
 
     # For code formatting
     pod 'SwiftFormat/CLI'

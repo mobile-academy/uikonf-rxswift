@@ -21,11 +21,13 @@
 		790004F8689BB9A10FF9D187 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790001A485670B30511AC694 /* FlowController.swift */; };
 		7900060EEF468A2C8E4FF41E /* ModelFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790008337D23D1BEF8E9DB2E /* ModelFormatters.swift */; };
 		790006AD7C97B14DD6719802 /* Geolocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790007F4085C6C0CECB12703 /* Geolocator.swift */; };
+		79000824FC7B70537C175818 /* DirectionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790003C72FBC471C92D200DD /* DirectionsService.swift */; };
 		790009523CDE0607211CC0AF /* GeolocatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000E5B44024AB0E4C1B6D2 /* GeolocatorSpec.swift */; };
 		79000A32DAE588F5178CC8FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000187CFBB2E47748E850A /* MapViewController.swift */; };
 		79000AC0B90E0EF08F5D532F /* LazyFaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000D137AE92FC2BBAA3C62 /* LazyFaking.swift */; };
 		79000D49D13F3500608747E7 /* FlightVisualizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790001030A05FDFD2470DDA7 /* FlightVisualizationViewModel.swift */; };
 		79000EE78747ACBE81271356 /* GentleUnwrapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000E1511EB1430092FC38D /* GentleUnwrapping.swift */; };
+		79000FD9F6486198DF83A24C /* AlternativeRouteVisualizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79000E3C4AE4E48C30EE1091 /* AlternativeRouteVisualizationViewModel.swift */; };
 		797BA4D6019618771E9F1896 /* Pods_Workshops_RxSwiftWorkshopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F6181449532051D618E099 /* Pods_Workshops_RxSwiftWorkshopTests.framework */; };
 		8108601AF59ED8EA7EE407F8 /* FakeIATAKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81086A9C451D010A64B689E3 /* FakeIATAKeys.swift */; };
 		8108603B301829C5B1DE8FE3 /* FlightsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810862A374CA8980AC5FA5AC /* FlightsViewControllerSpec.swift */; };
@@ -77,13 +79,13 @@
 		4385967E1EABC18E00776FD3 /* Introduction.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Introduction.playground; sourceTree = "<group>"; };
 		466B1D2C1EBA095C00817988 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		466B1D2E1EBA096200817988 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		52036CEEDCB7E091B933FF1E /* Pods_Workshops_RxSwiftWorkshopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workshops_RxSwiftWorkshopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		78500F6DCA81CC5CBAFD6536 /* Pods_Workshops_RxSwiftWorkshop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workshops_RxSwiftWorkshop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		467620271EC8DFC4002E0513 /* ReactiveAPI.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ReactiveAPI.playground; sourceTree = "<group>"; };
 		79000095B20383E503946982 /* FakeSystemGeolocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSystemGeolocator.swift; sourceTree = "<group>"; };
 		790001030A05FDFD2470DDA7 /* FlightVisualizationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightVisualizationViewModel.swift; sourceTree = "<group>"; };
 		790001545A1E24B77B09637F /* MapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
 		79000187CFBB2E47748E850A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		790001A485670B30511AC694 /* FlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
+		790003C72FBC471C92D200DD /* DirectionsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsService.swift; sourceTree = "<group>"; };
 		790007F4085C6C0CECB12703 /* Geolocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geolocator.swift; sourceTree = "<group>"; };
 		79000806D682D73BB575D987 /* QuickExpressiveness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickExpressiveness.swift; sourceTree = "<group>"; };
 		790008337D23D1BEF8E9DB2E /* ModelFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelFormatters.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		79000ACAEFDEF90A65883CFF /* Equatability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatability.swift; sourceTree = "<group>"; };
 		79000D137AE92FC2BBAA3C62 /* LazyFaking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyFaking.swift; sourceTree = "<group>"; };
 		79000E1511EB1430092FC38D /* GentleUnwrapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GentleUnwrapping.swift; sourceTree = "<group>"; };
+		79000E3C4AE4E48C30EE1091 /* AlternativeRouteVisualizationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeRouteVisualizationViewModel.swift; sourceTree = "<group>"; };
 		79000E5B44024AB0E4C1B6D2 /* GeolocatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeolocatorSpec.swift; sourceTree = "<group>"; };
 		8108613B491818888084903B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		810862A374CA8980AC5FA5AC /* FlightsViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightsViewControllerSpec.swift; sourceTree = "<group>"; };
@@ -138,7 +141,6 @@
 			files = (
 				466B1D2F1EBA096200817988 /* MapKit.framework in Frameworks */,
 				466B1D2D1EBA095C00817988 /* CoreLocation.framework in Frameworks */,
-				A6C525EBCF52E3932667BFE5,
 				5CA88F91BE7D4BEB439F0F93 /* Pods_Workshops_RxSwiftWorkshop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,17 +156,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F30E297ED77089A1B82B2FD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				466B1D2E1EBA096200817988 /* MapKit.framework */,
-				466B1D2C1EBA095C00817988 /* CoreLocation.framework */,
-				78500F6DCA81CC5CBAFD6536 /* Pods_Workshops_RxSwiftWorkshop.framework */,
-				52036CEEDCB7E091B933FF1E /* Pods_Workshops_RxSwiftWorkshopTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		438596601EABC06800776FD3 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +165,7 @@
 				4385966A1EABC06800776FD3 /* Products */,
 				4695771E8A77AAC4D050E61F /* Pods */,
 				FBBA64A9F0D2D751F9185B3D /* Frameworks */,
+				467620271EC8DFC4002E0513 /* ReactiveAPI.playground */,
 			);
 			sourceTree = "<group>";
 		};
@@ -224,6 +216,7 @@
 			children = (
 				790001545A1E24B77B09637F /* MapViewDelegate.swift */,
 				790001030A05FDFD2470DDA7 /* FlightVisualizationViewModel.swift */,
+				79000E3C4AE4E48C30EE1091 /* AlternativeRouteVisualizationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -245,6 +238,7 @@
 				790007F4085C6C0CECB12703 /* Geolocator.swift */,
 				79000E5B44024AB0E4C1B6D2 /* GeolocatorSpec.swift */,
 				790008518E6DD1F739329E24 /* Route.swift */,
+				790003C72FBC471C92D200DD /* DirectionsService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -637,6 +631,8 @@
 				79000D49D13F3500608747E7 /* FlightVisualizationViewModel.swift in Sources */,
 				7900043FC44B5112CFB85CF1 /* Route.swift in Sources */,
 				790004F8689BB9A10FF9D187 /* FlowController.swift in Sources */,
+				79000824FC7B70537C175818 /* DirectionsService.swift in Sources */,
+				79000FD9F6486198DF83A24C /* AlternativeRouteVisualizationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

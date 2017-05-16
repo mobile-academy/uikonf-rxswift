@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='raw' executeOnSourceChanges='false'>
+    <pages>
+        <page name='1. Just from Observable.create'/>
+        <page name='2. From Array from Observable.create'/>
+        <page name='3. Request from Observable.create'/>
+        <page name='4. From Array from PublishSubject'/>
+        <page name='5. From Array from ReplaySubject'/>
+    </pages>
+</playground>

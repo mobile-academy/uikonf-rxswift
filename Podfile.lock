@@ -4,6 +4,7 @@ PODS:
   - Mimus (1.0.0)
   - Nimble (7.0.0)
   - Quick (1.1.0)
+  - Result (3.2.1)
   - RxCocoa (3.4.1):
     - RxSwift (~> 3.4)
   - RxDataSources (1.0.3):
@@ -22,6 +23,7 @@ DEPENDENCIES:
   - Mimus
   - Nimble
   - Quick
+  - Result (~> 3.2.1)
   - RxCocoa (~> 3.0)
   - RxDataSources (~> 1.0)
   - RxSwift (~> 3.0)
@@ -40,6 +42,7 @@ SPEC CHECKSUMS:
   Mimus: bd140656a973b40c572ea1e4e7aef6721e1bcb4f
   Nimble: 874982b605d4d752fcac6be695d13c502de84b1b
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
+  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   RxCocoa: a8a5f1d061d0043e28f56976829f31ce63e8eb09
   RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
   RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
@@ -48,6 +51,6 @@ SPEC CHECKSUMS:
   SwiftDate: ae615078806a322183e5f64e02e80ca8d939bf48
   SwiftFormat: c48c1981bb39a0cacf5bc459785f9bae22f7a1a4
 
-PODFILE CHECKSUM: bc09f0af7752c98c991079ca7b368fc3e63fb7ea
+PODFILE CHECKSUM: 7f865faf3c5db847f35015f2dca1731f9e3e3f21
 
 COCOAPODS: 1.2.1
